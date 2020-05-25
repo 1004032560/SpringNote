@@ -2,12 +2,10 @@
 
 
 
-### 1.1、Spring目标
+### 1.1、Spring FrameWork目标
 
-Spring FrameWork 的目标
-
-* 使用声明性事务，向 EJB（Enterprise Java Beans：企业 Java Beans）发出挑战
-* 框架整合（整合多个框架，协同工作）
+* 使用声明性事务管理，向 EJB（Enterprise Java Beans：企业 Java Beans）发出挑战
+* 框架整合（整合多个框架，协同工作，避免重复造轮子）
 
 
 
@@ -15,12 +13,13 @@ Spring FrameWork 的目标
 
 #### Java EE
 
-* Java EE（Java Enterprise Edition）Java 企业级版本，现已经更名为：Jakarta
+Java EE 是：（Java Enterprise Edition）Java 企业级版本（现已经更名为：Jakarta）Java EE 是sun 制定的一套开发规范 Java 开发规范（Specification）由一系列的 JSR 组成
 
-* Java EE 是sun 制定的一套开发规范 Java 开发规范（Specification）
 
-* Java EE 由一系列的 JSR 组成
-* JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
+
+#### JSR
+
+JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
 
 
 
@@ -32,11 +31,12 @@ Spring FrameWork 的目标
 
 
 
-### 1.3、Spring和JavaEE
+### 1.3、Spring和Java EE
 
 1. Spring 是轻量级的框架，EJB 是重量级的框架
-2. Spring 使用声明式事务代替 EJB，和 Java EE 属于竞争关系
-3. Spring 是第三方框架，Java 是规范，Spring 开发必须满足 Java EE 的规范
+2. Spring 是轻量级容器+组件模式，EJB 是重量级容器+组件模式
+3. Spring 使用声明式事务代替 EJB，和 Java EE 属于竞争关系
+4. Spring 是第三方框架，Java 是规范，Spring 开发必须满足 Java EE 的规范
 
 
 
@@ -56,27 +56,25 @@ Spring FrameWork 的目标
 
 ### 1.5、Spring 4 框架的架构
 
-Test 模块：
+Test 模块：测试模块
 
 Core Container 模块：Beans、Core、Context、SpEL
 
 AOP 模块：AOP、Aspects、Instrumentation（引介）、Messaging
 
-Data Access 模块： JDBC ORM OXM JMS Transaction
+Data Access 模块： JDBC、ORM、OXM、JMS、Transaction
 
 Web： WebSocket、Servlet、Web Portlet
-
-
 
 
 
 ### 1.6、Spring 5 特点
 
 1. 支持 Java EE 8
-2. 支持 JSR 规范：Servlet API - JSR340、WebSocket API - JSR356、Concurrency Utilities、JSON Binding、
+2. 支持 JSR 规范：Servlet API - JSR340、WebSocket API - JSR356、Concurrency Utilities - JSR236、JSON Binding API - JSR367、Bean Validation - JSR303、JPA - JSR338、JMS - JSR914
 
-   1.支持JAVAEE8
-    2.支持JSR 
+
+
 
 ### 1.7、Spring 核心功能
 
@@ -86,17 +84,17 @@ IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数�
 
 ### 1.8、Spring框架功能总览
 
-核心功能：Spring 容器与 Bean 的生命周期管理
+**核心功能：Spring 容器与 Bean 的生命周期管理**
 
 #### 1.8.2、Bean
 
-The Spring Container：生产 Bean ，管理 Bean
+The Spring Container：管理（生产、使用、销毁）Bean
 
 
 
 #### 1.8.2、AOP
 
-将辅助代码在不修改原理代码的基础上，织入到原始对象的代码中，对源代码进行增强
+将辅助代码，在不修改原来代码的基础上，织入到原始对象的代码中，对源代码进行增强
 
 
 
@@ -104,17 +102,23 @@ The Spring Container：生产 Bean ，管理 Bean
 
 1. 事务管理：编程式事务、无侵入性声明式事务（推荐）
 
+2. JDBCTemplate 支持
+
+3. DAO 支持
+
+4. ORM 框架支持：Hibernate、JPA、MyBatis
+
 
 
 #### 1.8.4、Web层技术
 
-Spring MVC、视图技术、
+Spring MVC、视图技术和其他 WEB 框架的集成
 
 
 
 #### 1.8.5、外部系统集成
 
-
+WEB Services、EJB、JMS、JMX、JCA CCI、Email、任务调度、动态语言支持、缓存
 
 
 
@@ -123,6 +127,10 @@ Spring MVC、视图技术、
 ## 2、Spring使用
 
 ### 2.1、Spring 介绍
+
+Spring 是一个开源框架，Spring 是于 2003 年兴起的一个轻量级的 Java 开发框架，由 Rod Johnson 在其著作`Expert One-On-One J2EE Development and Design` 中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。Spring 使用基本的 JavaBean 来完成以前只可能由 EJB 完成的事情。然而，Spring 的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何 Java 应用都可以从 Spring 中受益
+
+#### 精简后：
 
 Spring 的提出者：Rod Johnson
 
@@ -135,7 +143,13 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
 
 
-### 2.2、使用Spring的好处
+### 2.2、Spring官网
+
+[Spring 官网](https://spring.io)
+
+
+
+### 2.3、使用Spring的好处
 
 #### 方便解耦，简化开发
 
@@ -165,8 +179,6 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
 
 
-
-
 ## 3、Maven
 
 ### 3.1、Maven
@@ -187,6 +199,12 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
     <version>5.2.6.RELEASE</version>
 </dependency>
 ~~~
+
+
+
+### 3.2、maven的工作原理
+
+通过在文件 pom.xml 中配置需要的 jar 包的坐标之后，根据坐标先去本地仓库中查，是否有相应的 jar 包，如果有直接引用过来，如果没有则回去 Maven 中央仓库中去下载，相应坐标的 jar 包到本地仓库，再进行引用
 
 
 
