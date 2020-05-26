@@ -5,7 +5,7 @@
 Spring 的资源管理在 JDK 的基础
 
 1. 隐藏底层的实现
-2.  新增资源存在判断、资源操作权限相关的功能，相对于 `java.net.URL` 资源不存在则设置为null更友好 
+2.  新增资源存在判断、资源操作权限相关的功能，相对于 `java.net.URL` 资源不存在则设置为 null 更友好 
 3. 支持通配符获取资源
 
 
@@ -115,7 +115,43 @@ IOC 容器实现了 ResourceLoader 接口，因此可以随时加载资源
 
 ### 1.7、应用上下文与资源
 
+#### 1.7.1、从classpath中加载资源
 
+类路径的根或者根下的目录均可以加载资源
+
+~~~java
+package com.tjetc.service;
+
+public class HelloService {
+	public String sayHello(String name) {
+		return "Hello " + name;
+	}
+}
+~~~
+
+`applicationContext.xml` 中的配置
+
+~~~xml
+<bean id="helloService" class="com.tjetc.service.HelloService"></bean>
+~~~
+
+测试代码
+
+~~~java
+public static void main(String[] args) {
+    // 创建Ioc容器
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("conf/applicationContext.xml");
+    HelloService helloService = (HelloService) context.getBean("helloService");
+    String hello = helloService.sayHello("张三");
+    System.out.println(hello);
+}
+~~~
+
+结果：Hello 张三
+
+
+
+#### 1.7.2、从当前程序运行的工作目录，用相对路径加载资源
 
 ClassPathXmlApplicationContext：当前运行的工作目录是类路径的根路径
 
@@ -136,8 +172,6 @@ public class SpringTest2 {
 	}
 }
 ~~~
-
-
 
 FileSystemXmlApplicationContext：当前运行的工作目录是工程的根路径
 
@@ -164,7 +198,23 @@ public class SpringTest3 {
 
 
 
-使用通配符 `*` 加载资源
+#### 1.7.3、使用指定前缀，从classpath中加载资源
+
+~~~java
+public static void main(String[] args) {
+    // 创建Ioc容器
+    FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("classpath:conf/applicationContext.xml");
+    HelloService helloService = (HelloService) context.getBean("helloService");
+    String hello = helloService.sayHello("张三");
+    System.out.println(hello);
+}
+~~~
+
+
+
+
+
+#### 1.7.4、使用通配符 `*` 加载资源
 
 ~~~java
 public class SpringTest3 {
@@ -182,8 +232,6 @@ public class SpringTest3 {
 	}
 }
 ~~~
-
-
 
 
 
