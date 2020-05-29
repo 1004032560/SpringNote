@@ -1,35 +1,31 @@
 ## 1、Spring
 
-
-
 ### 1.1、Spring FrameWork目标
 
 * 使用声明性事务管理，向 EJB（Enterprise Java Beans：企业 Java Beans）发出挑战
-* 框架整合（整合多个框架，协同工作，避免重复造轮子）
+* 框架整合（整合其他优秀框架，协同工作，避免重复造轮子）
 
-
+<br>
 
 ### 1.2、Java EE（Jakarta） 
 
-#### Java EE
+#### 1.2.1、Java EE
 
 Java EE 是：（Java Enterprise Edition）Java 企业级版本（现已经更名为：Jakarta）Java EE 是sun 制定的一套开发规范 Java 开发规范（Specification）由一系列的 JSR 组成
 
+> 2018-03-05日，据国外媒体报道，开源组织 Eclipse 基金会宣布将 JavaEE(Enterprise Edition) 被更名为JakartaEE (雅加达)。这是 Oracle 将 Java 移交给开源组织 Eclipse 后实现对 Java 品牌控制的最新举措。尽管开源组织曾经争取过，但这无法撼动甲骨文的意志。
 
-
-#### JSR
+#### 1.2.2、JSR
 
 JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
 
-
-
-#### Java EE容器与组件
+#### 1.2.3、Java EE容器与组件
 
 容器：Applet Container、Web Container、Application client Container、EJB Container
 
 组件：Applet、JSP、Servlet、JavaBean、EJB JavaBean
 
-
+<br>
 
 ### 1.3、Spring和Java EE
 
@@ -38,13 +34,23 @@ JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
 3. Spring 使用声明式事务代替 EJB，和 Java EE 属于竞争关系
 4. Spring 是第三方框架，Java 是规范，Spring 开发必须满足 Java EE 的规范
 
+<br>
 
+### 1.3、Spring与Java EE的关系？
+
+1. JavaEE 是平台规范，Spring 框架是技术
+
+2. Spring 代码需要遵从 Java EE 的规范，同时 Spring 希望使用 AOP 技术代替 Java EE 的 EJB，两者既是竞争关系又是合作关系
+
+3. Spring 官方宣称，Spring 和 JavaEE 不存在竞争关系，Spring 是 JavaEE 平台功能的有效补充和完善
+
+<br>
 
 ### 1.4、Spring特点
 
-1. IoC（Inversion of Control）：使用 IoC 机制解耦（避免硬编码造成程序耦合）
+1. IoC：（Inversion of Control）控制反转，使用 IoC 机制解耦（避免硬编码造成程序耦合）
 
-2. AOP：Aspect Orentied Programming 面向切面编程
+2. AOP：（Aspect Orentied Programming）面向切面编程
 3. 声明式事务管理
 4. 对 JDBC 进行轻量级封装，更加灵活的操作数据库
 
@@ -66,6 +72,10 @@ Data Access 模块： JDBC、ORM、OXM、JMS、Transaction
 
 Web： WebSocket、Servlet、Web Portlet
 
+#### Spring 4.3 架构图
+
+![looper_2020-05-29_10-18-01](image\looper_2020-05-29_10-18-01.png)
+
 
 
 ### 1.6、Spring 5 特点
@@ -76,9 +86,9 @@ Web： WebSocket、Servlet、Web Portlet
 
 
 
-### 1.7、Spring 核心功能
+### 1.7、Spring核心功能
 
-IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数据验证
+**IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数据验证**
 
 
 
@@ -86,15 +96,23 @@ IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数�
 
 **核心功能：Spring 容器与 Bean 的生命周期管理**
 
+![looper_2020-05-29_10-24-39](image\looper_2020-05-29_10-24-39.png)
+
+
+
 #### 1.8.2、Bean
 
 The Spring Container：管理（生产、使用、销毁）Bean
 
+![looper_2020-05-29_10-27-40](image\looper_2020-05-29_10-27-40.png)
 
 
-#### 1.8.2、AOP
+
+#### 1.8.2、AOP（Aspect Oriented Programming）
 
 将辅助代码，在不修改原来代码的基础上，织入到原始对象的代码中，对源代码进行增强
+
+![looper_2020-05-29_10-30-32](image\looper_2020-05-29_10-30-32.png)
 
 
 
@@ -112,7 +130,7 @@ The Spring Container：管理（生产、使用、销毁）Bean
 
 #### 1.8.4、Web层技术
 
-Spring MVC、视图技术和其他 WEB 框架的集成
+Spring MVC、视图技术、其他 WEB 框架的集成
 
 
 
@@ -122,7 +140,23 @@ WEB Services、EJB、JMS、JMX、JCA CCI、Email、任务调度、动态语言�
 
 
 
+### 1.9、Spring 模块和 jar 对应关系
 
+![looper_2020-05-29_10-34-17](E:\1.soft\personalNotes\Spring\image\looper_2020-05-29_10-34-17.png)
+
+
+
+### 1.10、Spring、Spring Framework、SpringMVC、Spring Project之间的关系
+
+Spring 是 Spring Framework、Spring MVC、Spring Project 的通称
+
+Spring Framework 是 Spring Project 中最基础的一个，他是 Spring 平台的基础和核心，其他的 Spring Project 基本都会用到 Spring Framework
+
+Spring MVC 是 Spring Framework 中的 Web 层技术
+
+<br>
+
+<br>
 
 ## 2、Spring使用
 
@@ -175,9 +209,9 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
 * Spring 对 Java EE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了封装，使这些 API 应用难度大大降低 
 
+<br>
 
-
-
+<br>
 
 ## 3、Maven
 
