@@ -92,7 +92,7 @@ Web： WebSocket、Servlet、Web Portlet
 
 ### 1.7、Spring核心功能
 
-**IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数据验证**
+**IoC 容器、Bean 生命周期管理、SpEL、AOP 容器、注解体系、数据验证**
 
 <br>
 
