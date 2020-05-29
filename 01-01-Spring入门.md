@@ -15,9 +15,13 @@ Java EE 是：（Java Enterprise Edition）Java 企业级版本（现已经更�
 
 > 2018-03-05日，据国外媒体报道，开源组织 Eclipse 基金会宣布将 JavaEE(Enterprise Edition) 被更名为JakartaEE (雅加达)。这是 Oracle 将 Java 移交给开源组织 Eclipse 后实现对 Java 品牌控制的最新举措。尽管开源组织曾经争取过，但这无法撼动甲骨文的意志。
 
+<br>
+
 #### 1.2.2、JSR
 
 JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
+
+<br>
 
 #### 1.2.3、Java EE容器与组件
 
@@ -58,7 +62,7 @@ JSR 是 Java Specification Requests 的缩写意思是：Java 规范提案
 6. 提供文件上传，定时器常用工具类
 7. 支持集成其他的框架
 
-
+<br>
 
 ### 1.5、Spring 4 框架的架构
 
@@ -72,25 +76,25 @@ Data Access 模块： JDBC、ORM、OXM、JMS、Transaction
 
 Web： WebSocket、Servlet、Web Portlet
 
-#### Spring 4.3 架构图
+**Spring 4.3 架构图**
 
 ![looper_2020-05-29_10-18-01](image\looper_2020-05-29_10-18-01.png)
 
-
+<br>
 
 ### 1.6、Spring 5 特点
 
 1. 支持 Java EE 8
 2. 支持 JSR 规范：Servlet API - JSR340、WebSocket API - JSR356、Concurrency Utilities - JSR236、JSON Binding API - JSR367、Bean Validation - JSR303、JPA - JSR338、JMS - JSR914
 
-
+<br>
 
 
 ### 1.7、Spring核心功能
 
 **IoC 容器、Bean 生命周期管理、SpELl、AOP 容器、注解体系、数据验证**
 
-
+<br>
 
 ### 1.8、Spring框架功能总览
 
@@ -98,7 +102,7 @@ Web： WebSocket、Servlet、Web Portlet
 
 ![looper_2020-05-29_10-24-39](image\looper_2020-05-29_10-24-39.png)
 
-
+<br>
 
 #### 1.8.2、Bean
 
@@ -106,7 +110,7 @@ The Spring Container：管理（生产、使用、销毁）Bean
 
 ![looper_2020-05-29_10-27-40](image\looper_2020-05-29_10-27-40.png)
 
-
+<br>
 
 #### 1.8.2、AOP（Aspect Oriented Programming）
 
@@ -114,7 +118,7 @@ The Spring Container：管理（生产、使用、销毁）Bean
 
 ![looper_2020-05-29_10-30-32](image\looper_2020-05-29_10-30-32.png)
 
-
+<br>
 
 #### 1.8.3、数据整合
 
@@ -126,25 +130,25 @@ The Spring Container：管理（生产、使用、销毁）Bean
 
 4. ORM 框架支持：Hibernate、JPA、MyBatis
 
-
+<br>
 
 #### 1.8.4、Web层技术
 
 Spring MVC、视图技术、其他 WEB 框架的集成
 
-
+<br>
 
 #### 1.8.5、外部系统集成
 
 WEB Services、EJB、JMS、JMX、JCA CCI、Email、任务调度、动态语言支持、缓存
 
-
+<br>
 
 ### 1.9、Spring 模块和 jar 对应关系
 
 ![looper_2020-05-29_10-34-17](E:\1.soft\personalNotes\Spring\image\looper_2020-05-29_10-34-17.png)
 
-
+<br>
 
 ### 1.10、Spring、Spring Framework、SpringMVC、Spring Project之间的关系
 
@@ -175,106 +179,48 @@ Spring 诞生的 2 本书
 
 Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
-
+<br>
 
 ### 2.2、Spring官网
 
 [Spring 官网](https://spring.io)
 
-
+<br>
 
 ### 2.3、使用Spring的好处
 
-#### 方便解耦，简化开发
+#### 2.3.1、方便解耦，简化开发
 
 * Spring 就是一个大工厂，可以将所有对象创建和依赖关系维护，交给 Spring 管理
 
-#### 支持 AOP 编程
+<br>
+
+#### 2.3.2、支持 AOP 编程
 
 * Spring 提供面向切面编程，可以方便的实现对程序进行权限拦截、运行监控等功能
 
-#### 支持声明式事务管理
+<br>
+
+#### 2.3.3、支持声明式事务管理
 
 * 只需要通过配置就可以完成对事务的管理，而无需手动编程
 
-#### 方便程序测试
+<br>
+
+#### 2.3.4、方便程序测试
 
 * Spring 对 Junit4 支持，可以通过注解方便的测试 Spring 程序
 
-#### 集成各种框架
+<br>
+
+#### 2.3.5、集成各种框架
 
 * Spring 不排斥各种优秀的开源框架，其内部提供了对各种优秀框架（如：Struts、Hibernate、MyBatis、Quartz 等）的直接支持
 
-#### 降低 Java EE API 的使用难度
+<br>
+
+#### 2.3.6、降低 Java EE API 的使用难度
 
 * Spring 对 Java EE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了封装，使这些 API 应用难度大大降低 
 
 <br>
-
-<br>
-
-## 3、Maven
-
-### 3.1、Maven
-
-Maven 项目对象模型（POM），通过一小段描述信息（pom.xml）来管理项目的构建，报告和文档的管理工具。
-
-Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
-
-* G：（GroupId）组织的 id，公司域名的倒写
-* A：（ArtifactId）工程名
-* V：（Version）版本号
-
-~~~xml
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context</artifactId>
-    <version>5.2.6.RELEASE</version>
-</dependency>
-~~~
-
-
-
-### 3.2、maven的工作原理
-
-通过在文件 pom.xml 中配置需要的 jar 包的坐标之后，根据坐标先去本地仓库中查，是否有相应的 jar 包，如果有直接引用过来，如果没有则回去 Maven 中央仓库中去下载，相应坐标的 jar 包到本地仓库，再进行引用
-
-
-
-3.2、Maven下载
-
-
-
-
-
-3.3、Maven配置
-
-Maven_HOME
-
-%MAVEN_HOME%\bin;
-
-
-
-jar：普通的 Java 工程
-
-war：Web 工程
-
-pom：父工程（让别的包去引用，不干活）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
