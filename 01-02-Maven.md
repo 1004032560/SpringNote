@@ -21,15 +21,11 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 <br>
 
-<br>
-
 ## 2、maven的工作原理
 
 ![looper_2020-05-29_10-50-28](image/looper_2020-05-29_10-50-28.png)
 
 通过在文件 pom.xml 中配置需要的 jar 包的坐标之后，根据坐标先去本地仓库中查，是否有相应的 jar 包，如果有直接引用过来，如果没有则回去 Maven 中央仓库中去下载，相应坐标的 jar 包到本地仓库，再进行引用
-
-<br>
 
 <br>
 
@@ -41,13 +37,9 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 <br>
 
-<br>
-
 ### 3.2、[Maven 官网](https://maven.apache.org)
 
 ![looper_2020-05-29_11-17-00](image/looper_2020-05-29_11-17-00.png)
-
-<br>
 
 <br>
 
@@ -57,21 +49,15 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 <br>
 
-<br>
-
 ### 3.4、下载压缩包
 
 ![looper_2020-05-29_11-19-49](image/looper_2020-05-29_11-19-49.png)
 
 <br>
 
-<br>
-
 ### 3.5、解压到本地文件夹
 
 ![looper_2020-05-29_11-23-35](E:/1.soft/personalNotes/Spring/image/looper_2020-05-29_11-23-35.png)
-
-<br>
 
 <br>
 
@@ -111,8 +97,6 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 #### 3.1.4、输入 `mvn -v` 出现如下字样，表示环境变量配置成功
 
 ![looper_2020-05-29_11-03-30](image\looper_2020-05-29_11-03-30.png)
-
-<br>
 
 <br>
 
@@ -188,8 +172,6 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 <br>
 
-<br>
-
 ## 5、创建 Maven 工程
 
 一切准备工作完成之后，就进行测试工作，首先来创建一个 Maven 工程，来体验 Maven 带来的便利之处
@@ -197,8 +179,6 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 ### 5.1、创建 Maven Project
 
 ![looper_2020-05-29_17-26-21](image\looper_2020-05-29_17-26-21.png)
-
-<br>
 
 <br>
 
@@ -215,13 +195,9 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 <br>
 
-<br>
-
 ### 5.3、Maven 的工程目录结构
 
 ![looper_2020-05-29_17-29-52](image\looper_2020-05-29_17-29-52.png)
-
-<br>
 
 <br>
 
