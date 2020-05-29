@@ -224,3 +224,123 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 * Spring 对 Java EE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了封装，使这些 API 应用难度大大降低 
 
 <br>
+
+### 2.4、写一个HelloSpring的小Demo
+
+#### 2.4.1、创建好一个Maven项目
+
+对于创建 Maven 项目，在介绍 Maven 的时候已经说过了，[详情点击此处]( https://github.com/1004032560/SpringNote/blob/master/01-02-Maven.md )
+
+<br>
+
+#### 2.4.2、引入Spring 的 jar 包
+
+了解过 Maven 之后，对于 jar 包的引入，只需要在 pom.xml 中配置相应的信息即可，配置完成之后，Maven 会根据相应的坐标去查找，如果本地仓库中没有，则需要去中央仓库下载（看个人网速，以及一些原因）
+
+~~~xml
+<dependencies>
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context</artifactId>
+    	<version>5.0.15.RELEASE</version>
+	</dependency>
+</dependencies>
+~~~
+
+引入成功之后如下图，Maven 依赖中会出现 Spring 项目需要的 jar 包
+
+![looper_2020-05-29_17-51-50](image\looper_2020-05-29_17-51-50.png)
+
+<br>
+
+#### 2.4.3、创建 Spring 核心配置文件
+
+在 `src/main/resources` 目录下右键 `new` 选择 `other` 搜索 `xml` 选择 `XML File-` 点击 `next`
+
+![looper_2020-05-29_17-57-12](image\looper_2020-05-29_17-57-12.png)
+
+命名为 `applicationContext.xml` 创建配置文件
+
+配置文件名称：可以任意起名，但是默认约定的是：`applicationContext.xml`
+
+![looper_2020-05-29_17-57-32](image\looper_2020-05-29_17-57-32.png)
+
+目录结构如下：
+
+![looper_2020-05-29_17-57-41](image\looper_2020-05-29_17-57-41.png)
+
+<br>
+
+#### 2.4.4、编写 Spring 核心配置文件
+
+在 `applicationContext.xml` 中编写配置文件
+
+内容参考 Spring 文档
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+</beans>
+~~~
+
+在程序中读取 Spring 配置文件，通过 Spring 框架获得 Bean，完成相应操作
+
+<br>
+
+#### 2.4.5、编写HelloSpring
+
+`service` 层下的 `HelloService` 类
+
+~~~java
+package com.looper.service;
+
+public class HelloService {
+    public String sayHello(String name) {
+		return "Hello "+name;
+	}
+}
+~~~
+
+在 `applicationContext.xml` 中配置 Bean，将该 `HelloService` 类，创建对象的权利，交给 Spring 容器去创建对象，需要的时候从容器中调用 bean 对象
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--
+  		id:bean的名称,一般约定:类名首字母小写
+  		class:类的全限定名(包名+类名)
+	-->
+    
+	<bean id="helloService" class="com.looper.service.HelloService"></bean>
+
+</beans>
+~~~
+
+`Test` 测试类
+
+~~~java
+public class SpringTest{
+    
+    public static void main(String[] args) {
+    	//实例化Spring容器对象
+    	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    	//从容器对象拿bean
+    	HelloService helloService = (HelloService) context.getBean("helloService");
+    	//调用对象的方法
+    	String result = helloService.sayHello("Spring");
+    	//打印结果
+    	System.out.println(result);
+	}
+
+}
+~~~
+
+结果：
+
+**Hello Spring**
