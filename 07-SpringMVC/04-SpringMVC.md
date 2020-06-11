@@ -2,7 +2,7 @@
 
 @RequestBody 注解，指明方法参数与 http 的请求体数据绑定。
 
-@RequestBody 用来接收前端传递给后端的 json 字符串，数据不是源于http 的参数，而是源于 http 的请求体。
+@RequestBody 用来接收前端传递给后端的 json 字符串，数据不是源于 http 的参数，而是源于 http 的请求体。
 
 转换 http 请求体到方法参数，需要使用 HttpMessageConverter。消息转换器还负责把方法参数转换为 http 回应体（response body）
 
