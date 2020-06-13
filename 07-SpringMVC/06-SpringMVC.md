@@ -27,8 +27,6 @@ LocaleChangeInterceptor：
 
 
 
-
-
 ### 2、multipart文件上传
 
 SpringMVC 使用 MultipartResolver 支持文件上传
@@ -151,7 +149,7 @@ public class GlobalExceptionHandler {
 
 
 
-
+#### 3.5、默认异常
 
 
 
