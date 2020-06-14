@@ -39,6 +39,8 @@ enctype 属性可以设置或者返回表单内容的 MIME 类型
 
 表单的 enctype 的默认值为 `application/x-www-form-urlencoded` 表示上传的为文本
 
+在 springweb.xml 中必须对文件上传的 bean 节点进行配置
+
 #### 文件上传案例：
 
 ~~~java
