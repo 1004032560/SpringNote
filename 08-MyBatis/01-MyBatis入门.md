@@ -22,6 +22,8 @@ MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接�
 
 ### 3、mybatis快速入门
 
+[mybatis 官网](https://mybatis.org/mybatis-3/zh/getting-started.html)
+
 #### 3.1、创建一个 Maven 的 jar 工程
 
 <br>
@@ -30,19 +32,19 @@ MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接�
 
 ~~~xml
 <dependency>
-	<groupId>junit</groupId>
-	<artifactId>junit</artifactId>
-	<version>4.12</version>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
 </dependency>
 <dependency>
-	<groupId>org.mybatis</groupId>
-	<artifactId>mybatis</artifactId>
-	<version>3.5.3</version>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.5.3</version>
 </dependency>
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-	<version>5.1.46</version>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.46</version>
 </dependency>
 ~~~
 
