@@ -36,6 +36,28 @@ ORM（Object Relation Mapping）关系对象映射：是指 Java 类对象与数
 
 
 
+ 
+
+#### 4.1、mybatis的入参类型
+
+* HashMap
+
+* String、Intege、基本数据类型
+
+* POJO（Plain Old Java Object）
+
+<br>
+
+#### 4.2、mybatis的出参类型
+
+* HashMap
+
+* String、Intege、基本数据类型
+
+* POJO（Plain Old Java Object）
+
+<br>
+
 1. MyBatis配置
 
 `mybatis.xml` 该文件为 mybatis 的全局配置文件，配置了 mybatis 运行环境等信息。
