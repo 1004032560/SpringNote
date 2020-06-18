@@ -32,7 +32,7 @@
 
 <br>
 
-#### 1.4、使用指定包下的所有Mapper接口（推荐使用）
+#### 1.4、使用Mapper接口所在的包  （推荐使用）
 
 ~~~xml
 <mappers>
@@ -45,8 +45,6 @@
 <br>
 
 <br>
-
-
 
 ## 2、XML映射文件
 
@@ -166,63 +164,78 @@ Mapper.xml 的 sql 中的 param 参数起始默认从 1 开始，与 Mapper 接�
 
 ![looper_2020-06-18_12-08-09.png](image/looper_2020-06-18_12-08-09.png)
 
+<br>
 
+<br>
 
 ### 2.3、insert, update 和 delete
 
 数据变更语句 insert，update 和 delete 的实现非常接近：
 
- Insert, Update, Delete 元素的常用属性 
+ Insert，Update，Delete 元素的常用属性
 
 | 属性               | 描述                                                         |
 | :----------------- | :----------------------------------------------------------- |
 | `id`               | 在命名空间中唯一的标识符，可以被用来引用这条语句。           |
-| `parameterType`    | 将会传入这条语句的参数的类全限定名或别名。这个属性是可选的，因为 MyBatis 可以通过类型处理器（TypeHandler）推断出具体传入语句的参数，默认值为未设置（unset）。 |
-| `statementType`    | 可选 STATEMENT，PREPARED 或 CALLABLE。这会让 MyBatis 分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。 |
-| `useGeneratedKeys` | （仅适用于 insert 和 update）这会令 MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键（比如：像 MySQL 和 SQL Server 这样的关系型数据库管理系统的自动递增字段），默认值：false。 |
+| `parameterType`    | 参数类型（类的全限定名或者别名）                             |
+| `useGeneratedKeys` | 使用自动增长的，默认值：false。                              |
 | `keyProperty`      | （仅适用于 insert 和 update）指定能够唯一识别对象的属性，MyBatis 会使用 getGeneratedKeys 的返回值或 insert 语句的 selectKey 子元素设置它的值，默认值：未设置（`unset`）。如果生成列不止一个，可以用逗号分隔多个属性名称。 |
 
+<br>
 
+<br>
 
 ### 2.4、主键自动增长
 
-#### 2.4.1、
+#### 2.4.1、方式一（推荐使用）
 
 设置 `useGeneratedKeys="true"`，然后再把 `keyProperty="id"` 设置为目标属性，就能把自动递增的主键值设置到实体类的 id 属性中
 
 ![looper_2020-06-18_14-03-06.png](image/looper_2020-06-18_14-03-06.png)
 
-
-
 ![looper_2020-06-18_14-03-47.png](image/looper_2020-06-18_14-03-47.png)
-
-
 
 ![looper_2020-06-18_14-05-05.png](image/looper_2020-06-18_14-05-05.png)
 
 <br>
 
-2.4.2、
+#### 2.4.2、方式二（不推荐使用）
 
-
+在配置中写 selectKey 节点
 
 ![looper_2020-06-18_14-45-04.png](image/looper_2020-06-18_14-45-04.png)
 
-
-
 ![looper_2020-06-18_14-44-26.png](image/looper_2020-06-18_14-44-26.png)
 
+<br>
 
+<br>
 
 ### 2.5、#{}和${}的区别
 
+`#{}` 表示一个占位符号，通过 `#{}` 可以实现 preparedStatement 向占位符中设置值
 
+自动进行java类型和jdbc类型转换，`#{}` 可以有效防止 sql 注入。
 
+`#{}` 可以接收简单类型值或 POJO 属性值。 
 
+如果 parameterType 传输单个简单类型值，`#{}` 括号中可以是value或其它名称。
+
+<br>
+
+`${}` 表示拼接sql串，通过 `${}` 可以将 parameterType 传入的内容拼接在 sql 中
+
+不进行 jdbc 类型转换，
+
+`${}` 可以接收简单类型值或 POJO 属性值。
+
+如果 parameterType 传输单个简单类型值，`${}` 括号中只能是 value。
+
+<br>
 
 ![looper_2020-06-18_14-21-47.png](image/looper_2020-06-18_14-21-47.png)
 
-
+如果参数中添加注解，进行映射时，需要和注解中的参数保持一致
 
 ![looper_2020-06-18_14-22-30.png](image/looper_2020-06-18_14-22-30.png)
 
@@ -260,6 +273,21 @@ Mapper.xml 的 sql 中的 param 参数起始默认从 1 开始，与 Mapper 接�
 
 
 
+#### 4.1、二级缓存
+
+
+
+
+
+
+
+开启二级缓存
+
+![looper_2020-06-18_16-30-36.png](image/looper_2020-06-18_16-30-36.png)
+
+Student 类实现序列化接口
+
+![looper_2020-06-18_16-32-30.png](image/looper_2020-06-18_16-32-30.png)
 
 
 
@@ -268,3 +296,35 @@ Mapper.xml 的 sql 中的 param 参数起始默认从 1 开始，与 Mapper 接�
 
 
 
+
+
+
+
+
+一级二级缓存并存的执行顺序
+
+
+
+ 判断二级缓存是否开启，如果没开启，再判断一级缓存是否开启，如果没开启，直接查数据库,如果一级缓存关闭，即使二级缓存开启也没有数据,如果二级缓存关闭，直接判断一级缓存是否有数据，如果没有就查数据库,如果二级缓存开启，先判断二级缓存有没有数据，如果有就直接返回；如果没有，就查询一级缓存，如果有就返回，没有就查询数据库 
+
+
+
+
+
+先从二级缓存查找，查找到了直接拿出返回
+
+如果二级缓存查找不到，到一级缓存中，拿到了直接返回
+
+如果一级缓存查找不到,发sql语句到数据库查找,将查询结果放到一级缓存,session关闭会清空一级缓存,会将数据放到二级缓存中
+
+4.session进行insert update delete后提交会清空一二级缓存.
+
+
+
+
+
+![looper_2020-06-18_16-59-34.png](image/looper_2020-06-18_16-59-34.png)
+
+
+
+![looper_2020-06-18_17-00-53.png](image/looper_2020-06-18_17-00-53.png)
