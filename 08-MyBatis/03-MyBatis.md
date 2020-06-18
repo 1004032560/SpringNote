@@ -53,21 +53,35 @@ org.apache.ibatis.type.BigDecimalTypeHandler
 
 #### 1.3、自定义的TypeHandler
 
-方式一：继承 BaseTypeHandler 类
+* 方式一：继承 BaseTypeHandler 类
 
+步骤一：继承 BaseTypeHandler 类，重写四个方法
 
+![looper_2020-06-18_09-01-31](image/looper_2020-06-18_09-01-31.png)
 
+<br>
 
+步骤二：在 mybatis.xml 中配置 typeHandlers 节点，在该节点的子节点中配置自定义的 MyTypeHandler 类的路径，以及转换的类型
 
+![looper_2020-06-18_09-05-19](image/looper_2020-06-18_09-05-19.png)
 
+<br>
 
-方式二：实现 TypeHandler 接口
+步骤二：测试
+
+![looper_2020-06-18_09-04-41](image/looper_2020-06-18_09-04-41.png)
+
+<br>
+
+* 方式二：实现 TypeHandler 接口
 
 1. 全局配置
 
 步骤一：实现 TypeHandler 接口
 
 ![looper_2020-06-18_08-30-20](image/looper_2020-06-18_08-30-20.png)
+
+<br>
 
 步骤二：在 mybatis.xml 中配置 typeHandlers 节点，在该节点的子节点中配置自定义的 MyTypeHandler 类的路径，以及转换的类型
 
@@ -77,13 +91,13 @@ org.apache.ibatis.type.BigDecimalTypeHandler
 
 2. 局部配置
 
-局不配置则需要在 mapper.xml 中进行局部配置，在 mybatis.xml 中就不需要再配置 typeHandlers 节点
+局不配置则需要在 mapper.xml 中进行局部配置，在 mybatis.xml 中就不需要再配置 typeHandlers 节点，其他的步骤保持不变。
 
 ![looper_2020-06-18_08-45-18](image/looper_2020-06-18_08-45-18.png)
 
+<br>
 
-
-
+<br>
 
 ### 2、ObjectFactory
 
