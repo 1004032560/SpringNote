@@ -10,7 +10,9 @@ TypeHandlers（类型处理器）：就是用来完成 JavaType 和 JdbcType 之
 
 #### 1.2、标准的TypeHandler
 
-MyBatis 设置预处理语句（PreparedStatement）中的参数
+* 7 种基本类型和包装类 
+
+* 其他
 
 默认的标准处理器（以下展示仅为部分转换器）
 
