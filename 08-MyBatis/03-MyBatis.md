@@ -99,9 +99,15 @@ org.apache.ibatis.type.BigDecimalTypeHandler
 
 <br>
 
-### 2、ObjectFactory
+### 2、ObjectFactory配置
 
+* 当 mybatis 每次创建一个新的结果集对象时，都需要使用 ObjectFactory 实例。
 
+* 如果希望重写默认 ObjectFactory 的行为，可以自定义对象工厂
+
+每次 MyBatis 创建结果对象的新实例时，它都会使用一个对象工厂（ObjectFactory）实例来完成实例化工作。 默认的对象工厂需要做的仅仅是实例化目标类，要么通过默认无参构造方法，要么通过存在的参数映射来调用带有参数的构造方法。 如果想覆盖对象工厂的默认行为，可以通过创建自己的对象工厂来实现。
+
+ObjectFactory 接口很简单，它包含两个创建实例用的方法，一个是处理默认无参构造方法的，另外一个是处理带参数的构造方法的。 另外，setProperties 方法可以被用来配置 ObjectFactory，在初始化你的 ObjectFactory 实例后， objectFactory 元素体中定义的属性会被传递给 setProperties 方法。
 
 
 
