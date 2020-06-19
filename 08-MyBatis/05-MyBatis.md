@@ -28,6 +28,10 @@ MyBatis 的动态 SQL 是基于 OGNL（Object Graph Navigate Language）对象�
 
 MyBatis 中用于实现动态 SQL 的元素主要有：
 
+### 2.1、if
+
+
+
 ### 2.2、choose
 
 [案例源码](0619-mybatis-02)
