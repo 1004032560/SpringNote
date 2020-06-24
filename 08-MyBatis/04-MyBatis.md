@@ -265,7 +265,7 @@ Mapper.xml 的 sql 中的 param 参数起始默认从 1 开始，与 Mapper 接�
 
 ##### 4.1.1、概念
 
-一级缓存是 SqlSession 级别的缓存,一级缓存区域是根据 SqlSession 为单位划分的
+一级缓存是 SqlSession 级别的缓存，一级缓存区域是根据 SqlSession 为单位划分的
 
 ##### 4.1.2、原理
 
@@ -295,7 +295,7 @@ value 为从查询出来映射生成的 Java 对象
 
 ##### 4.1.1、概念
 
-​		二级缓存区域是根据 mapper 的 namespace 划分的，相同 namespace 的 mapper 查询数据放在同一个区域,是跨 session 缓存
+​		二级缓存区域是根据 mapper 的 namespace 划分的，相同 namespace 的 mapper 查询数据放在同一个区域，是跨 session 缓存
 
 ##### 4.1.2、命中率算法:
 
