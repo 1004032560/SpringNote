@@ -54,6 +54,3 @@ SSM：Spring + Spring MVC + MyBatis 三大框架
 8. 创建 mybatis.xml 配置 MyBatis
 
 完成以上步骤，环境基本就配置成功了，然后就进行测试
-
-
-
