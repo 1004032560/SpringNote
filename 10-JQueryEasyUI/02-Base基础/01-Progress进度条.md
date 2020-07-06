@@ -22,3 +22,14 @@
 </script>
 ~~~
 
+
+
+
+
+~~~html
+<body>
+<div id="p" class="easyui-progressbar" style="width:400px"></div><br><br>
+<button onclick="test()">显示</button><br><br>
+</body>
+~~~
+
