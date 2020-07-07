@@ -40,3 +40,42 @@
 </table> 
 ~~~
 
+
+
+toolbar 工具栏
+
+~~~html
+<body>
+
+<table id="dg">
+</table>
+<script type="text/javascript">
+$('#dg').datagrid({    
+    url:'datagrid_data.json',
+    pagination:true,
+    pagePosition:'bottom',
+    toolbar: [{
+    	text:'添加',
+		iconCls: 'icon-add',
+		handler: function(){alert('添加按钮')}
+	},'-',{
+		text:'编辑',
+		iconCls: 'icon-edit',
+		handler: function(){alert('编辑按钮')}
+	},'-',{
+		text:'帮助',
+		iconCls: 'icon-help',
+		handler: function(){alert('帮助按钮')}
+	}],
+    pageSize:2,
+    pageList:[2,4,6,8,10],
+    columns:[[    
+        {field:'id',title:'编号',width:100,align:'center'},    
+        {field:'name',title:'姓名',width:100,align:'right'},    
+        {field:'age',title:'年龄',width:100,align:'right'}    
+    ]]    
+});
+</script>
+</body>
+~~~
+
