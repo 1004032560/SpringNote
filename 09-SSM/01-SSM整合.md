@@ -11,9 +11,9 @@ SSM：Spring + Spring MVC + MyBatis 三大框架
 #### 1.2.1、Spring
 
 * 能整合各种框架
-
 * Spring 框架充当父容器
 * ContextLoaderListener 启动实例化 Spring 容器，管理 Bean（Service、Mapper、数据源、SqlSession、MapperScanConfiguror、Transaction）管理理业务层和数据访问层
+* 
 
 <br>
 

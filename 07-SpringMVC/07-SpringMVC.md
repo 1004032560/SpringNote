@@ -16,15 +16,15 @@
 
 JSR330: Dependency Injection for Java 1.0
 
-• JSR303 Bean Validation1.0与JSR349: Bean Validation 1.1
+* JSR303 Bean Validation1.0与JSR349: Bean Validation 1.1
 
-• 数据校验的实现者，主要是hibernate，因此数据校验示例中必须要导入hibernate-validator.jar
+* 数据校验的实现者，主要是hibernate，因此数据校验示例中必须要导入hibernate-validator.jar
 
-• Spring不做数据校验的实现，它提供的是支持 JSR330 和 JSR349 的整合方案。
+* Spring不做数据校验的实现，它提供的是支持 JSR330 和 JSR349 的整合方案。
 
-• JavaEE容器，如Tomcat8，整合hibernate-validator.jar后可以实现数据校验工作。
+* JavaEE容器，如Tomcat8，整合hibernate-validator.jar后可以实现数据校验工作。
 
-• Spring提供的数据校验工作，实际是把原来由JavaEE容器实现的功能，由Spring的容器代替了。Spring整合数据校验工作后，代码更加的简单了。
+* Spring提供的数据校验工作，实际是把原来由JavaEE容器实现的功能，由Spring的容器代替了。Spring整合数据校验工作后，代码更加的简单了。
 
 
 
