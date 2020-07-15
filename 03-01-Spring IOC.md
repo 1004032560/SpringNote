@@ -11,7 +11,7 @@
 
 控制反转：IoC（Inversion of Control）创建对象的权利，由应用程序创建改为由容器创建，控制权进行了转移
 
-依赖注入：DI（Dependency Injection）把容器创建好的依赖对象注入进来
+依赖注入：DI（Dependency Injection）把容器动态创建好的依赖对象注入到组件中
 
 ![looper_2020-05-29_10-24-39](image\looper_2020-05-29_10-24-39.png)
 
