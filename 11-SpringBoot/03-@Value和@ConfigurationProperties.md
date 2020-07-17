@@ -162,6 +162,10 @@ yaml 支持松散绑定，properties 不支持松散绑定
 
 只能加载 `xxx.properties` 类型的配置文件
 
+使用步骤
+
+
+
 <br>
 
 ## 5、@ImportResource
