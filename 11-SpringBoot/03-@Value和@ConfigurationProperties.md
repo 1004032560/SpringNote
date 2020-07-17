@@ -159,3 +159,11 @@ yaml 支持松散绑定，properties 不支持松散绑定
 由于 @PropertySource 加载的默认配置文件是 application.properties，如果需要加载指定的配置文件则需要添加该注解。
 
 `@PropertySource("classpath:person.properties")`
+
+只能加载 `xxx.properties` 类型的配置文件
+
+<br>
+
+## 5、@ImportResource
+
+@ImportResource(locations="classpath:beans.xml")
