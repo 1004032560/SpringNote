@@ -71,3 +71,38 @@ pom.xml 添加 actuator 启动器
 </dependency>
 ~~~
 
+<br>
+
+## 4、配置文件
+
+Spring Boot 使用一个全局的配置文件，配置文件名是固定的：
+
+* application.properties
+
+* application.yml
+
+配置文件的作用：修改 SpringBoot 自动配置的默认值；SpringBoot 在底层都给我们自动配置好；
+
+配置文件放在 src/main/resources 目录或者类路径 /config 下 yml 是 YAML（Yet Another Markup Language）语言的文件，以数据为中心，比 json、xml 等更适合做配置文件，参考语法规范 `http://www.yaml.org/`；
+
+全局配置文件的可以对一些默认配置值进行修改
+
+YAML（YAML Ain't Markup Language）
+
+YAML A Markup Language：是一个标记语言
+
+YAML isn't Markup Language：不是一个标记语言；
+
+标记语言：
+
+以前的配置文件；大多都使用的是 xxxx.xml 文件；
+
+YAML：以数据为中心，比 json、xml 等更适合做配置文件；
+
+YAML：配置例子
+
+~~~yml
+server:
+  port: 8082
+~~~
+
