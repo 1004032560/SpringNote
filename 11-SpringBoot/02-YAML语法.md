@@ -130,3 +130,50 @@ user:
 user2: {username: lisi,password: 123456,age: 20,pets: [dog,cat,pig],book: {name: "book1 \n book2"}}
 ~~~
 
+<br>
+
+## 6、yaml 配置文件值获取
+
+1. 用 @ConfigurationProperties(prefix = "person") 注解获取
+
+application.yml 配置文件
+
+~~~yml
+person:
+  lastName: lisi
+  age: 20
+  boss: false
+  birth: 2020/03/20
+  maps: {k1: v1,k2: v2}
+  lists:
+    - lisi
+    - zhaoliu
+  dog:
+    name: 小狗
+    age: 5
+~~~
+
+Person 实体类
+
+~~~java
+/**
+* 将配置文件中配置的每一个属性的值，映射到这个组件中
+* @ConfigurationProperties：告诉SpringBoot将本类中的所有属性和配置文件中相关的配置进行绑定；
+* prefix = "person"：配置文件中哪个下面的所有属性进行一一映射
+*
+* 只有这个组件是容器中的组件，才能容器提供的@ConfigurationProperties功能；
+*
+*/
+
+@Component
+@ConfigurationProperties(prefix="person")
+public class Person {
+
+	private String lastName;
+	private Integer age;
+	private Boolean boss;
+	private Map<String, Object> maps;
+	private List<String> lists;
+	private Dog dog;
+~~~
+
