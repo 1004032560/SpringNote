@@ -95,8 +95,70 @@ public class StudentController {
 
 <br>
 
-
+<br>
 
 ## 2、SpringBoot整合MyBatis
 
-### 
+#### 2.1、引入mybatis和mysql的依赖
+
+~~~xml
+<dependency>
+	<groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>1.3.2</version>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.46</version>
+</dependency>
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.2.3</version>
+</dependency>
+~~~
+
+<br>
+
+#### 2.2、在application.yml配置数据源
+
+~~~yml
+spring:
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///test03
+    username: root
+    password: 123looper.
+~~~
+
+<br>
+
+#### 2.3、在主配置类上添加注解@MapperScan
+
+~~~java
+@SpringBootApplication
+@MapperScan("com.tjetc.mapper")
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+~~~
+
+<br>
+
+#### 2.4、自动生成Mapper接口和POJO类
+
+<br>
+
+#### 2.5、controller、service层都和之前的SSM项目写法差不多
+
+<br>
+
+#### 2.6、按照之前的方式启动，地址栏中输入地址即可
+
+
+
