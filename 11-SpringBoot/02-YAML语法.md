@@ -110,3 +110,23 @@ pets:
 `''`：单引号；不会转义特殊字符，特殊字符最终只是一个普通的字符串数据
 
 `name: 'zhangsan \n lisi'`：输出 zhangsan \n lisi
+
+<br>
+
+## 5、案例
+
+~~~yml
+user: 
+  username: lisi
+  password: 123456
+  age: 20
+  pets: 
+    - dog
+    - cat
+    - pig
+  book: 
+    name: "book1 \n book2"
+  
+user2: {username: lisi,password: 123456,age: 20,pets: [dog,cat,pig],book: {name: "book1 \n book2"}}
+~~~
+
