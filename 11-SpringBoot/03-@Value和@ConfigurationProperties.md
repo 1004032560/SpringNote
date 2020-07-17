@@ -149,3 +149,13 @@ public class Person {
 – PERSON_FIRST_NAME：推荐系统属性使用这种写法
 
 yaml 支持松散绑定，properties 不支持松散绑定
+
+<br>
+
+## 4、@PropertySource
+
+@PropertySource 加载指定的配置文件
+
+由于 @PropertySource 加载的默认配置文件是 application.properties，如果需要加载指定的配置文件则需要添加该注解。
+
+`@PropertySource("classpath:person.properties")`
