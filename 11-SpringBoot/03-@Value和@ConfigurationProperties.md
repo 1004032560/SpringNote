@@ -1,4 +1,51 @@
-## 1、用@Value取值
+## 1、yaml 配置文件值获取
+
+### 1.1、用@ConfigurationProperties注解获取
+
+application.yml 配置文件
+
+~~~yml
+person:
+  lastName: lisi
+  age: 20
+  boss: false
+  birth: 2020/03/20
+  maps: {k1: v1,k2: v2}
+  lists:
+    - lisi
+    - zhaoliu
+  dog:
+    name: 小狗
+    age: 5
+~~~
+
+Person 实体类
+
+~~~java
+/**
+* 将配置文件中配置的每一个属性的值，映射到这个组件中
+* @ConfigurationProperties：告诉SpringBoot将本类中的所有属性和配置文件中相关的配置进行绑定；
+* prefix = "person"：配置文件中哪个下面的所有属性进行一一映射
+*
+* 只有这个组件是容器中的组件，才能容器提供的@ConfigurationProperties功能；
+*
+*/
+
+@Component
+@ConfigurationProperties(prefix="person")
+public class Person {
+
+	private String lastName;
+	private Integer age;
+	private Boolean boss;
+	private Map<String, Object> maps;
+	private List<String> lists;
+	private Dog dog;
+~~~
+
+<br>
+
+### 1.2、用@Value取值
 
 @Value 会从以下几处拿值：
 
@@ -45,11 +92,53 @@ public class Person {
 	private Dog dog;
 ~~~
 
+<br>
 
+## 2、@ConfigurationProperties和@Value区别
 
+1. 功能
 
+   @ConfigurationProperties 批量注入
 
-松散绑定属性名匹配规则(Relaxed binding):
+   @Value 单个注入
+
+2. 松散绑定
+
+   @ConfigurationProperties 支持
+
+   @Value 不支持
+
+3. JSR303 数据校验
+
+   @ConfigurationProperties 支持
+
+   @Value 不支持
+
+4. SpEL
+
+   @ConfigurationProperties 不支持
+
+   @Value 支持
+
+5. 复杂数据封装
+
+   @ConfigurationProperties 支持
+
+   @Value 不支持
+
+注意：数据校验的时候需要导入 hibernate-validator.jar 包
+
+~~~xml
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>5.3.6.Final</version>
+</dependency>
+~~~
+
+<br>
+
+## 3、松散绑定属性名匹配规则(Relaxed binding)
 
 – person.firstName：使用标准方式
 
@@ -57,8 +146,6 @@ public class Person {
 
 – person.first_name：大写用_
 
-– PERSON_FIRST_NAME：
+– PERSON_FIRST_NAME：推荐系统属性使用这种写法
 
-• 推荐系统属性使用这种写法
-
-yaml支持松散绑定,properties不支持松散绑定.
+yaml 支持松散绑定，properties 不支持松散绑定
