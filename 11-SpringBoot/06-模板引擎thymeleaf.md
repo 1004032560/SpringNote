@@ -102,13 +102,81 @@ URL还可以设置参数：`@{/order/details(id=${orderId})}`
 
 ### 1.7、几种常用的使用方法
 
-#### 赋值，
+#### 1.7.1、赋值、字符串拼接
 
 ~~~html
 <span th:text="'welcome you : '+${name}+'!'"></span>
 <br><br><br>
+<!-- 字符串拼接还有另外一种简洁的写法 -->
 <span th:text="|welcome you : ${name}!|"></span>
 ~~~
 
+<br>
 
+#### 1.7.2、条件判断if/unless
+
+Thymeleaf 中使用 th:if 和 th:unless 属性进行条件判断，下面的例子中， `<a>`标签只有在 th:if 中条件成立时才显示：
+
+~~~html
+<a th:if="${myself=='yes'}"></a>
+~~~
+
+th:unless 于 th:if 恰好相反，只有表达式中的条件不成立，才会显示其内容。
+
+~~~html
+<a th:unless="${myself=='yes'}">Gooooo2!</a>
+~~~
+
+也可以使用 (if) ? (then) : (else) 这种语法来判断显示的内容
+
+~~~html
+<span th:text="${myself=='yes'}?'ok':'不ok'">old</span>
+~~~
+
+<br>
+
+#### 1.7.3、for循环
+
+ ~~~html
+<table>
+	<tr th:each="s,st:${list}">
+		<td th:text="${s}"></td>
+		<td th:text="${st.index}"></td>
+		<td th:text="${st.count}"></td>
+		<td th:text="${st.first}"></td>
+		<td th:text="${st.last}"></td>
+		<td th:text="${st.even}"></td>
+		<td th:text="${st.odd}"></td>
+		<td th:text="${st.size}"></td>
+		<td th:text="${st.current}"></td>
+	</tr>
+</table>
+ ~~~
+
+iterStat 称作状态变量，属性有：
+
+- index：当前迭代对象的 index（从0开始计算）
+- count：当前迭代次数（从1开始计算）
+- size：被迭代对象的大小
+- current：当前迭代变量
+- even/odd：布尔值，当前循环是否是偶数/奇数（从0开始计算）
+- first：布尔值，当前循环是否是第一个
+- last：布尔值，当前循环是否是最后一个
+
+<br>
+
+#### 1.7.4、内置对象
+
+为了模板更加易用，Thymeleaf 还提供了一系列 Utility 对象（内置于 Context 中），可以通过 # 直接访问：
+
+- dates：java.util.Date 的功能方法类。
+- calendars：类似 #dates，面向 java.util.Calendar
+- numbers：格式化数字的功能方法类
+- strings：字符串对象的功能类，contains，startWiths，prepending/appending等等。
+- objects：对 objects 的功能类操作。
+- bools：对布尔值求值的功能方法。
+- arrays：对数组的功能类方法。
+- lists：对 lists 功能类方法
+- sets：
+- maps：
 
