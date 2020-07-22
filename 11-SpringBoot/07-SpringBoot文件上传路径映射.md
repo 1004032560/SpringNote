@@ -51,12 +51,5 @@ public String update(Student student, MultipartFile photo, HttpServletRequest re
 
 <br>
 
-#### 
 
-~~~java
-File file = new File("D://images/");
-if(file.exeit){
-    
-}
-~~~
 
