@@ -126,3 +126,50 @@ hash叫散列表
 1. 增加元素：sadd key value [value...]（sadd set 1 2 2 4 5 4）
 2. 删除元素：srem key value [value...]（srem set 1 5）
 
+<br>
+
+### Redis的SortedSet数据类型
+
+1. 增加元素：zadd score 80 zhangsan 65 lisi 85 wangwu
+2. 获取元素分数：zscore score lisi
+3. 删除元素：zrem score lisi
+4. 获取排名在某个范围内的元素：
+   * 按照分数从小到大显示姓名：zrange score 0 3
+   * 按照分数从大到小显示姓名和分数：zrevrange score 0 3 withscores
+5. 获取元素排名
+   * 从小到大：zrank key memeber
+   * 从大到小：zrevrank key memeber
+6. 获得指定分数范围的元素：zrangebyscore key min max
+7. 增加某个元素的分数：zincrby key increment member
+8. 获取元素数量：zcard key
+9. 获得指定范围内的元素个数：zcount key min max
+10. 按照排名范围删除元素：zremrangebyrank key start stop
+11. 按照分数范围删除元素：zremrangebyscore key min max
+
+
+
+zrangebyscore score 90 95
+
+zrangebyscore score 80 95 withscores
+
+zrangebyscore score 80 95 withscores limit 1 2
+
+增加某个元素的分数
+
+<br>
+
+### Keys命令
+
+keys pattern（keys s*）
+
+exists key（exists score）
+
+del key（del score）
+
+rename key newKey（rename s s1）
+
+type key（type s1）
+
+（expire s1 50）设置存活时间
+
+（persist s）设置一直存活
