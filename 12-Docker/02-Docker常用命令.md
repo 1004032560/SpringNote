@@ -8,3 +8,4 @@ docker images：列出本地镜像
 
 docker rmi image-id：删除本地指定的镜像
 
+

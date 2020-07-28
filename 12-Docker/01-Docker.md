@@ -2,21 +2,21 @@
 
 ### 1.1、什么是Docker
 
-开源引擎，可以轻松为任何应用创建一个轻量级、可重用、自给自用的容器
+Docker是一个开源引擎，可以轻松为任何应用创建一个轻量级、可移植、自给自用的容器
 
 <br>
 
 ### 1.2、Docker核心组件
 
-Docker 主机：
+Docker 主机（Host）：安装了 docker 程序的机器（docker 直接安装在操作系统纸上）
 
-Docker 客户端：连接 docker 主机进行操作
+Docker 客户端（Client）：连接 docker 主机进行操作
 
-Docker 仓库：用来保存各种打包好的软件镜像
+Docker 仓库（Registry）：用来保存各种打包好的软件镜像
 
-Docker 镜像：软件打包好的镜像，放在 docker 仓库中
+Docker 镜像（Images）：软件打包好的镜像，放在 docker 仓库中
 
-Docker 容器：镜像启动后的实例称之为一个容器，容器时独立运行的一个或者一组容器
+Docker 容器（Container）：镜像启动后的实例称之为一个容器，容器时独立运行的一个或者一组容器
 
 <br>
 
