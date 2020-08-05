@@ -51,4 +51,26 @@ Hystrix 是前端的处理组件，因而需要放置在 consumer 消费应用�
 
 <br>
 
-3.3、
+#### 3.3、开启熔断
+
+类似于之前的操作，在控制层代码中开启熔断设置：
+
+~~~java
+@RequestMapping("/findById")
+@ResponseBody
+@HystrixCommand(fallbackMethod = "fallback4Wait")
+public Map<String,String> findById(int id) {
+    System.out.println("this id = " + id);
+    String url = "http://user-service/findById?id=" + id ;
+    Map<String,String> result = restTemplate.getForObject(url, Map.class);
+    return result ;
+}
+
+public Map<String,String> fallback4Wait(int id) {
+    Map<String,String> result = new HashMap<>() ;
+    result.put("result","400") ;
+    return result ;
+}
+~~~
+
+说明：@HystrixCommand(fallbackMethod="fallback4Wait")：声明一个失败回滚处理函数fallback4Wait，当 findById 执 行超时（默认是1000 毫秒），就会执行 fallback4Wait 函数，返回错误提示。  
