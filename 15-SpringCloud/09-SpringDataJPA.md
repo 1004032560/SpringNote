@@ -93,6 +93,13 @@ public class Person {
     作用：指定主键的生成方式。。
     属性：
         strategy ：指定主键生成策略。
+        	JPA提供的四种标准用法为TABLE,SEQUENCE,IDENTITY,AUTO。
+			IDENTITY: 主键由数据库自动生成（主要是自动增长型）
+			SEQUENCE: 根据底层数据库的序列来生成主键，条件是数据库支持序列。
+			AUTO: 主键由程序控制
+			TABLE: 使用一个特定的数据库表格来保存主键
+
+
 @Column
     作用：指定实体类属性和数据库表之间的对应关系
     属性：
