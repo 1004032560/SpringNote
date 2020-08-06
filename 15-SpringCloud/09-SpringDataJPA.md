@@ -261,6 +261,8 @@ public class Person {
 
 使用一个特定的数据库表格来保存主键
 
+指定表，名字的列，值的列，名字列的指，下一次 Id 定义 allocationSize = 1
+
 ~~~java
 @Entity
 public class Person {
@@ -284,4 +286,4 @@ public class Person {
 
 ### 3.4、IDENTITY
 
-MySQL 建议使用 IDENTITY
+MySQL 建议使用 IDENTITY，Id 每次自增 1
