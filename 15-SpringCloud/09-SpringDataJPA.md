@@ -192,3 +192,96 @@ class ApplicationTests {
 }
 ~~~
 
+
+
+## 3、主键生成策略
+
+通过 annotation（注解）来映射 hibernate 实体的，基于 annotation 的 hibernate 主键标识为@Id，其生成规则由 @GeneratedValue 设定的。
+
+这里的 @id 和 @GeneratedValue 都是 JPA 的标准用法。
+
+JPA 提供的四种标准用法为：TABLE，SEQUENCE，IDENTITY，AUTO。
+
+IDENTITY：主键由数据库自动生成（主要是自动增长型）
+
+SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。
+
+AUTO：主键由程序控制
+
+TABLE：使用一个特定的数据库表格来保存主键
+
+<br>
+
+### 3.1、AUTO（什么都不写）
+
+会自动生成 hibernate_sequence 表，字段为 next_val 记录下一次 id 的值，每次取完会自增一
+
+~~~java
+@Entity
+public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private int age;
+}
+~~~
+
+<br>
+
+~~~
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: insert into person (age, name, id) values (?, ?, ?)
+~~~
+
+<br>
+
+### 3.2、SEQUENCE
+
+在 MySQL 不支持 SEQUENCE 序列，但是会自动生成 seq_payment 表，字段为 next_val ，该字段默认每次自增 50，需要设置 allocationSize = 1，每次就会按照 1 递增。
+
+（MySQL 不支持 SEQUENCE 序列）
+
+~~~java
+@Entity
+public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "payablemoney_seq")
+    @SequenceGenerator(allocationSize = 1, name = "payablemoney_seq", sequenceName = "seq_payment")
+    private int id;
+    private String name;
+    private int age;
+}
+~~~
+
+<br>
+
+### 3.3、TABLE
+
+使用一个特定的数据库表格来保存主键
+
+~~~java
+@Entity
+public class Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator="pk_gen")
+    @TableGenerator(name = "pk_gen",
+            table="tb_generator",
+            pkColumnName="gen_name",
+            valueColumnName="gen_value",
+            pkColumnValue="PAYABLEMOENY_PK",
+            allocationSize=1
+    )
+    private int id;
+    private String name;
+    private int age;
+}
+~~~
+
+<br>
+
+### 3.4、IDENTITY
+
+MySQL 建议使用 IDENTITY
