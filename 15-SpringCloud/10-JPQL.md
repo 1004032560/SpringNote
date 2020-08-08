@@ -429,7 +429,7 @@ void testStudentToCourse() {
 
 注解的属性 fetch = FetchType.EAGER 和 fetch = FetchType.LAZY
 
-默认 LAZY （）
+默认 LAZY 表示懒加载
 
 <br>
 
