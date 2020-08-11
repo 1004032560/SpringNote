@@ -52,7 +52,7 @@ AMQP（Advance Message Queuing Protocol）一个提供统一消息服务的应�
 
 <br>
 
-## 2、安装RabbitMQ
+## 2、Docker安装RabbitMQ
 
 ### 2.1、搜索拉取镜像
 
@@ -81,5 +81,11 @@ docker ps
 ### 2.5、服务
 
 `http://ip:15672/ guest/guest`
+
+<br>
+
+### 2.6、启动该容器
+
+docker start 容器ID
 
 <br>
