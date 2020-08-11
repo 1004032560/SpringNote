@@ -2,7 +2,7 @@
 
 ### 1.1、RabbitMQ定义
 
-RabbitMQ 是一个开源的消息代理和队列服务器，通过普通协议在完全不同的应用之间共享数据.
+RabbitMQ 是一个开源的消息代理和队列服务器，通过普通协议在完全不同的应用之间共享数据。
 
 RabbitMQ 是使用 Erlang 语言编写的，并且 RabbitMQ 是基于 AMQP（Advance Message Queuing Protocol）协议的。
 
@@ -89,3 +89,9 @@ docker ps
 docker start 容器ID
 
 <br>
+
+<br>
+
+## 3、RabbitMQ快速入门
+
+3.1、创建 SpringBoot 工程
