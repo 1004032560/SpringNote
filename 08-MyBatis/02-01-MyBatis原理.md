@@ -1,39 +1,10 @@
-### 1、MyBatis和JDBC的区别
-
-1. 减少了大量的代码
-2. 最简单的持久化框架
-3. 架构级性能增强
-4. SQL 代码从程序中彻底分离，可以重用
-5. 增强了项目中的分工
-6. 增强了一移植性
-
-<br>
-
-<br>
-
-### 2、MyBatis和Hibernate的区别
-
-![looper_2020-06-17_10-09-39](image/looper_2020-06-17_10-09-39.png)
-
-<br>
-
-<br>
-
-### 3、ORM
-
-ORM（Object Relation Mapping）关系对象映射：是指 Java 类对象与数据库表的对应关系，数据库表的一条记录代表一个 Java 对象
-
-<br>
-
-<br>
-
-### 4、MyBatis架构
+## 1、MyBatis架构
 
 ![looper_2020-06-17_10-11-10](image/looper_2020-06-17_10-11-10.png)
 
  <br>
 
-#### 4.1、mybatis的入参类型
+### 1.1、mybatis的入参类型
 
 * HashMap
 
@@ -43,7 +14,7 @@ ORM（Object Relation Mapping）关系对象映射：是指 Java 类对象与数
 
 <br>
 
-#### 4.2、mybatis的出参类型
+### 1.2、mybatis的出参类型
 
 * HashMap
 
@@ -53,64 +24,31 @@ ORM（Object Relation Mapping）关系对象映射：是指 Java 类对象与数
 
 <br>
 
-#### 4.3、流程
+### 1.3、流程
 
 1. MyBatis配置
 
-`mybatis.xml` 该文件为 mybatis 的全局配置文件，配置了 mybatis 运行环境等信息。
+`mybatisConfig.xml`：该文件为 mybatis 的全局配置文件，配置了 mybatis 运行环境等信息。
 
-`studentMapper` 该文件为 sql 映射文件，文件中配置了操作数据库的 sql 语句，该文件需要在 `mybatis.xml` 中加载。
+`mapper.xml`：该文件为 sql 映射文件，文件中配置了操作数据库的 sql 语句，该文件需要在 `mybatisConfig.xml` 中加载。
 
-2. 通过 mybatis 环境等配置信息构造 SqlSessionFactory 即会话工厂
+2. 通过 mybatis 环境等配置信息构造 SqlSessionFactory（会话工厂）
 
-3. 由会话工厂创建 sqlSession 即会话，操作数据库需要通过 sqlSession 进行。
+3. 由会话工厂创建 sqlSession（会话），需要通过 sqlSession 操作数据库。
 
-4. 通过 Executor（负责动态 SQL 的生成和查询缓存的维护）将 MappedStatement 对象进行解析，sql 参数转化、动态 sql 拼接，生成 jdbc Statement 对象。
+4. 通过 Executor（负责动态 SQL 的生成和查询缓存的维护）将 MappedStatement 对象进行解析，sql 参数转化、动态 sql 拼接，生成 Jdbc Statement 对象等。
 
-5、 Mapped Statement也是mybatis一个底层封装对象，它包装了mybatis配置信息及sql映射信息等。mapper.xml文件中一个sql对应一个Mapped Statement对象，sql的id即是Mapped statement的id,当API接口层接收到调用请求时，会接收到传入SQL的ID和传入对象（可以是Map、JavaBean或者基本数据类型），Mybatis会根据SQL的ID找到对应的MappedStatement，然后根据传入参数对象对MappedStatement进行解析，解析后可以得到最终要执行的SQL语句和参数。
+5. Mapped Statement 也是 mybatis 一个底层封装对象，它包装了mybatis 配置信息及 sql 映射信息等。mapper.xml 文件中一个 sql 对应一个 Mapped Statement 对象，sql 的 id 即是 Mapped statement 的 id，当 API 接口层接收到调用请求时，会接收到传入 SQL 的 ID 和传入对象（可以是 Map、JavaBean 或者基本数据类型），Mybatis 会根据 SQL 的 ID 找到对应的 MappedStatement，然后根据传入参数对象对MappedStatement 进行解析，解析后可以得到最终要执行的 SQL 语句和参数。
 
-6、 Mapped Statement对sql执行输入参数进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql前将输入的java对象映射至sql中，输入参数映射就是jdbc编程中对preparedStatement设置参数。
+6. Mapped Statement 对 sql 执行输入参数进行定义，包括 HashMap、基本类型、pojo，Executor 通过 Mapped Statement 在执行 sql 前将输入的 Java 对象映射至 sql 中，输入参数映射就是 Jdbc 编程中对 preparedStatement 设置参数。
 
-7、 Mapped Statement对sql执行输出结果进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql后将将操作数据库的结果按照映射的配置进行转换，可以转换成HashMap、JavaBean或者基本数据类型，并将最终结果返回，输出结果映射过程相当于jdbc编程中对结果的解析处理过程,。
-
-
+7. Mapped Statement 对 sql 执行输出结果进行定义，包括 HashMap、基本类型、pojo，Executor 通过 Mapped Statement 在执行 sql 后将将操作数据库的结果按照映射的配置进行转换，可以转换成 HashMap、JavaBean 或者基本数据类型，并将最终结果返回，输出结果映射过程相当于 Jdbc 编程中对结果的解析处理过程。
 
 <br>
 
 <br>
 
-### 5、控制台显示sql语句
 
-1. 在 `pom.xml` 中引入 `log4j` 的 `jar` 包
-
-2. 配置文件 `log4j.properties`
-
-~~~properties
-log4j.rootLogger=DEBUG, stdout
-log4j.logger.org.mybatis.example.BlogMapper=TRACE
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
-~~~
-
-3. 运行测试类
-
-~~~java
-@Test
-public void getStudent() {
-	SqlSession session = factory.openSession();
-    Student student = session.selectOne("test.select",1);
-    System.out.println(student);
-    session.commit();
-    session.close();
-}
-~~~
-
-4. 控制台显示信息
-
-![looper_2020-06-16_10-54-36](image/looper_2020-06-16_10-54-36.png)
-
-<br>
 
 <br>
 
