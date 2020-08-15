@@ -1,34 +1,42 @@
-### 1、什么是mybatis 
+## 1、MyBatis
 
-MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。
+### 1.1、什么是MyBatis
 
-MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。
+MyBatis 是一款优秀、开源的持久层框架，它支持自定义 SQL、存储过程以及高级映射。
+
+MyBatis 几乎免除了所有的 JDBC 代码，以及设置参数和获取结果集的工作。
 
 MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
 
- 
+ <br>
 
-### 2、mybatis优点
+### 1.2、mybatis优点
 
-1. 基于SQL语法，简单易学
+1. 基于 SQL 语法，简单易学
 
 2. 能了解底层组装过程
 
-3. SQL语句封装在配置文件中，便于统一管理与维护，降低了程序的耦合度
+3. SQL 语句封装在配置文件中，便于统一管理与维护，降低了程序的耦合度
 
 4. 程序调试方便
 
-
-
-### 3、mybatis快速入门
-
-[mybatis 官网](https://mybatis.org/mybatis-3/zh/getting-started.html)
-
-#### 3.1、创建一个 Maven 的 jar 工程
+<br>
 
 <br>
 
-#### 3.2、在 pom.xml 添加 mybatis、mysql、junit 的 jar 依赖
+## 2、mybatis快速入门
+
+[mybatis 官网](https://mybatis.org/mybatis-3/zh/getting-started.html)
+
+### 2.1、创建工程
+
+创建一个 Maven 的 jar 工程
+
+<br>
+
+### 2.2、配置依赖
+
+在 pom.xml 添加 mybatis、mysql、junit 的 jar 依赖
 
 ~~~xml
 <dependency>
@@ -50,7 +58,9 @@ MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接�
 
 <br>
 
-#### 3.3、在 `main/src/resource` 创建配置文件 `mybatis.xml`
+### 2.3、MyBatis配置文件
+
+### 在 `main/src/resource` 创建配置文件 `mybatis.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -77,7 +87,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <br>
 
-#### 3.4、创建一个实体类，实体类中的属性与数据库表中的字段应该相对应
+### 2.4、实体类
+
+创建一个实体类，实体类中的属性与数据库表中的字段应该相对应
 
 ~~~java
 public class Student {
@@ -89,7 +101,9 @@ public class Student {
 
 <br>
 
-#### 3.5、在该实体类同文件下创建 `studentMapper.xml` 配置文件
+### 2.5、SQL配置文件
+
+在该实体类同文件下创建 `studentMapper.xml` 配置文件
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -102,6 +116,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into student(name,age) values(#{name},#{age})
 	</insert>
 </mapper>
+~~~
+
+<br>
+
+### 2.6、测试
+
+~~~java
+public class StudentTest {
+	private static SqlSessionFactory factory;
+	static{
+		try {
+			factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis.xml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testAdd() {
+		SqlSession session = factory.openSession();
+		Student student = new Student("zs",20);
+		int i = session.insert("test.add",student);
+		session.commit();
+		session.close();
+		System.out.println("ok...");
+	}
+	@Test
+	public void testUpdate() {
+		SqlSession session = factory.openSession();
+		Student student = new Student(1,"zs2",22);
+		int i = session.update("test.update",student);
+		System.out.println(i);
+		session.commit();
+		session.close();
+		System.out.println("ok...");
+	}
+	@Test
+	public void testDel() {
+		SqlSession session = factory.openSession();
+		int i = session.delete("test.del", 1);
+		System.out.println(i);
+		session.commit();
+		session.close();
+		System.out.println("ok...");
+	}
+	@Test
+	public void testList() {
+		SqlSession session = factory.openSession();
+		List<Student> list = session.selectList("test.list");
+		for (Student student : list) {
+			System.out.println(student);
+		}
+		session.close();
+		System.out.println("ok...");
+	}
+	@Test
+	public void testGet() {
+		SqlSession session = factory.openSession();
+		Student student = session.selectOne("test.get", 2);
+		System.out.println(student);
+		session.close();
+		System.out.println("ok...");
+	}
+}
 ~~~
 
 
