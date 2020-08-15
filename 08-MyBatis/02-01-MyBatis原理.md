@@ -48,83 +48,67 @@
 
 <br>
 
+## 2、MyBatis工作原理
 
+![looper_2020-08-15_23-14-26.png](image/looper_2020-08-15_23-14-26.png)
 
 <br>
 
-### 6、MyBatis的Mapper动态代理
+### 2.1、SqlSession与Connection关系
 
-#### 6.1、原理
+1. SqlSession 包装了 JDBC 的 Connection，Statement，PreparedStatement，ResultSet 接口
+
+2. SqlSession 含有方法：
+   * `Configuration getConfiguration()`：所有 mybatis 的核心配置信息和映射配置信息的读取
+   * `<T> T getMapper(Class<T> type)`：对 JDBC 更高级简单封装
+   * `Connection getConnection()`：包装了底层的 Connection 对象
+   * 常见的数据库的增删改查方法
+
+3. DefaultSqlSession：是 SqlSession 接口的默认实现，含有 SqlSession 的方法
+4. BaseExceutor：封装了对 Connection 的管理
+5. Transaction：数据库的 Connection 从 dataSource 中获取，并用 Transaction 包装
+
+<br>
+
+### 2.2、SqlSession与getMapper实现原理
+
+MyBatis 采用 JDK 动态代理生成 Mapper 接口的代理对象
+
+`StudentMapper mapper = session.getMapper(StudentMapper.class);`
+
+<br>
+
+<br>
+
+## 3、MyBatis的Mapper动态代理
+
+### 3.1、原理
 
 Mapper 接口开发方法只需要程序员编写 Mapper 接口（相当于 Dao 接口），由 MyBatis 框架根据接口定义创建接口的动态代理对象，代理对象的方法体和上边 Dao 接口实现类方法体相同
 
-* MyBatis 的 Mapper 接口动态代理实现原理：
-  1. 之前：Dao 接口的 DaoImpl 实现类
-  2. MyBatis：Mapper 接口（等价于 Dao 接口）MyBatis 自动生成 Mapper 接口的实现类代理对象（MyBatis 框架自动生成实现类代理对象，不用程序员手写实现类了）
+MyBatis 的 Mapper 接口动态代理实现与 Dao 接口实现 DaoImpl 比较：
+1. 原生 JDBC： Dao 接口的 DaoImpl 实现类
+2. MyBatis：Mapper 接口（等价于 Dao 接口）MyBatis 自动生成 Mapper 接口的实现类代理对象（MyBatis 框架自动生成实现类代理对象，不用程序员手写实现类了）
 
 <br>
 
-#### 6.2、规范4+2
+### 3.2、4+2规范
 
 Mapper 接口开发必须遵循以下规范：
 
 1. `mapper.xml` 文件中的 namespace 与 Mapper 接口的类路径相同
 2. Mapper 接口的方法名和 `mapper.xml` 中定义的每个 statement 的 id 相同
-3. Mapper 接口的方法的输入参数类型和 `mapper.xml` 中定义的每个 sql 的 parameterType 的类型相同
-4. Mapper 接口的方法的输出参数类型和 `mapper.xml` 中定义的每个 sql 的 resultType 的类型相同
+3. Mapper 接口的方法参数类型和 `mapper.xml` 中定义的每个 sql 的 parameterType 的类型相同
+4. Mapper 接口的方法返回值类型和 `mapper.xml` 中定义的每个 sql 的 resultType 的类型相同
 
-* 要求 Mapper 接口名称和 mapper 映射文件名称相同
-* 要求 Mapper 接口名称和 mapper 映射文件放在同一个目录中
-
- 
-
-<br>
-
-#### 6.3、步骤
-
-
+* 要求 Mapper 接口名称和 `mapper.xml` 映射文件名称相同
+* 要求 Mapper 接口名称和 `mapper.xml` 映射文件放在同一个目录中
 
 <br>
 
 <br>
 
 
-
-### 7、注解配置sql
-
-#### 7.1、概念：
-
-把 sql 语句写在接口的方法上方的对应的注解里
-
-`@Insert("insert into ...")`
-
-`@Update("update ...")`
-
-`@Delete("delete from ...")`
-
-`@Select("select ...")`
-
-**注意：映射配置文件可以空，也可以不写**
-
-<br>
-
-#### 7.2、案例：
-
-~~~java
-public interface StudentMapper {
-
-	@Delete("delete from student where id=#{id}")
-	void del(int id);
-	
-	@Select("select * from student")
-	List<Student> list();
-	
-}
-~~~
-
-<br>
-
-<br>
 
 ### 8、MyBatis分页插件
 
@@ -172,54 +156,6 @@ public void getStudents() {
 
 
 <br>
-
-<br>
-
-### 9、MyBatis工作原理
-
-#### 9.1、SqlSession与Connection关系
-
-1. SqlSession 包装了 JDBC 的 Connection，Statement，PreparedStatement，ResultSet 接口
-
-2. SqlSession 含有方法：
-   * `Configuration getConfiguration()`：所有 mybatis 的核心配置信息和映射配置信息的读取
-   * `<T> T getMapper(Class<T> type)`：对 JDBC 更高级简单封装
-   * `Connection getConnection()`：包装了底层的 Connection 对象
-   * 常见的数据库的增删改查方法
-
-3. DefaultSqlSession：是 SqlSession 接口的默认实现，含有 SqlSession 的方法
-4. BaseExceutor：封装了对 Connection 的管理
-5. Transaction：数据库的 Connection 从 dataSource 中获取，并用 Transaction 包装
-
-<br>
-
-#### 9.2、SqlSession与getMapper实现原理
-
-MyBatis 采用 JDK 动态代理生成 Mapper 接口的代理对象
-
-`StudentMapper mapper = session.getMapper(StudentMapper.class);`
-
-
-
-
-
-
-
-`List<Student> list = mapper.list();//在此处打断点`
-
-断点观察 SqlSession -->> configuration -->> mappedStatements（映射文件中的 sql 读取后，都存于此处）
-
-
-
-MyBatis 中映射文件的 sql 读取后，存于 mappedStatements 中，他的数据结构为 StrictMap 
-
-StrictMap 与 HashMap 的不同
-
-StrictMap 第一次 put 进去之后，第二次 put 时，如果 key 值有相同的就会报错
-
-
-
-（）
 
 <br>
 
