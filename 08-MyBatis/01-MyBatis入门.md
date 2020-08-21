@@ -80,7 +80,7 @@ ORM（Object Relation Mapping）关系对象映射：是指 Java 类对象与数
 
 ### 2.3、MyBatis配置文件
 
-### 在 `main/src/resource` 创建配置文件 `mybatis.xml`
+在 `main/src/resource` 创建配置文件 `mybatis.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
