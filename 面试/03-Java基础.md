@@ -9,25 +9,94 @@
 
 ### 2、Java中的异常有哪几类，分别怎么使用？
 
-Java 中的异常有 Throwable 分为：Error（错误）和 Exception（异常），Error 表示系统内部错误，是不可自动修复的
+Java 中的异常有 Throwable 分为：Error（错误）和 Exception（异常）
+
+Error 表示系统内部错误，是不可自动修复的，常见的有：IOError、OutOfMemoryError、StackOverFlowError。
+
+Exception 分为运行时异常（NullPointerException、ClassNotFoundException、ClassCastException、IndexOutOfBoundsException）和非运行时异常（IOException、SQLException）
+
+throw和throws：throw使用于方法体中，表示抛出相应的异常，由方法体处理；throws用在方法后面，用于声明该方法可能会抛出相应的异常，由该方法的调用者处理该异常。
 
 
 
 ### 3、常用的集合类有哪些？
 
+Collection集合和Map集合；Collection是单列的集合；Map是双列的集合。
+
+Collection分为List和Set；List特点是有序，数据可以重复；Set的特点是无序，数据不可重复。
+
+List中有ArrayList、LinkedList和Vector
+
+* ArrayList底层是使用Object类型的数组实现的，可以动态扩容。基于数组的特点，所以ArrayList遍历快（数组有索引，利用索引可以进行随机访问），增删慢（增删都涉及到数据的移位）。ArrayList实现了Serializable接口可以序列化和反序列化，可用于网络传输数据。ArrayList初始的时候默认数组长度是10，扩容时每次增加0.5倍。扩容的方式是利用的数组的复制。
+* LinkedList底层采用的是双向链表，双向链表保证了数据的有序性，上一个节点保存了下一个节点的地址，下一个节点也保存了上一个节点的地址。基于链表的特性，所以LinkedList的特点是增删快（只需要修改相应的存放地址），遍历比较慢（需要一个节点一个节点的去遍历）
+* Vector底层个ArrayList一样都是数组实现的，但是Vector属于线程安全，因为Vector的内部方法都使用Synchronized修饰的，因此在单线程中它的效率不高。
+
+<br>
+
+Set中有HashSet、TreeSet和LinkedHashSet
+
+* HashSet底层是HashMap，但是使用的只有Key那一列，Value那一列默认存放的是Object，因此HashSet是无序的。集合的元素可以为Null，但是只能存放一个。不是线程安全的，不同步。 HashSet实际上就是封装了HashMap，操作HashSet元素实际上就是操作 HashMap。这也是⾯向对象的⼀种体现，重⽤性贼⾼！
+* TreeSet实现的是SortedSet接口，是SortedSet的唯一实现类，可以自动排序（Comparable接口中的CompareTo方法实现排序，自然排序和制定排序）。TreeSet底层是TreeMap
+* LinkedHashSet底层采用的是HashMap+双向链表，允许为Null
+
+<br>
+
+Map中有HashMap、TreeMap、HashTable和LinkedHashMap
+
+* * HashMap底层采用的是数组+链表/红黑树（JDK1.8之后），允许为Null，无序，
+  * 初始容量为16（最大容量2的30次方），装载因子为0.75，当单链大于8时转换为红黑树（并不是桶⼦上有8位元素的时候它就能变成红⿊树，它得同时满⾜我们的散列表容 量⼤于64才⾏的），红黑树小于6时转换为链表。
+  * Key的Hash值通过高16位做异或运算，减少碰撞冲突的可能性。
+  * 不属于线程安全，单线程中效率高，需要线程安全时，可使用ConcurrentHashMap（当数组长度为2的n次幂的时候，不同的key算得得index相同的几率较小，那么数据在数组上分布就比较均匀，也就是说碰撞的几率小，相对的，查询的时候就不用遍历某个位置上的链表，这样查询效率也就较高了。）
+  * （HashMap中元素个数超过16 X 0.75 = 12 的时候，就把数组的大小扩展为 2 X 16 = 32 ，即扩大一倍，然后重新计算每个元素在数组中的位置）
+  * （ 在散列表中有装载因⼦这么⼀个属性，当装载因⼦*初始容量⼩于散列表元素时，该散列表会再散列， 扩容2倍！ ）
+* HashTable底层数组+链表，是线程安全，不允许Null值和Null键
+* TreeMap是SortedMap接⼝的实现类，所以TreeMap有序，TreeMap底层是红⿊树，非同步（ 想要同步可以使⽤Collections来进⾏封装 ）。使用comparator 来比较key是否相等与排序，key不能为null
+* LinkedHashMap底层是散列表+双向链表，每次添加进来的值都会记录上一个节点的地址，上一个节点也会记录一下个节点的值，保证了有序性。 允许为null，不同步 。LinkedHashMap设置了两种遍历顺序：访问顺序（LRU最近最少使用算法）和插入顺序
 
 
 
+## 4、多线程
 
-### 4、ArrayList和LinkedList内部大致怎么实现的，他们之间的区别和优缺点是什么？
+### 4.1、什么是线程
 
+线程是操作系统能够进行运算调度的最小单位，进程是系统进行资源分配和调度的一个独立单位。
 
+线程包含在进程中，一个进程中至少包含一个线程，也可以包含多个线程。
 
+线程是进程中的实际运作单位，可以使用多线程进行运算提速。
 
+### 4.2、什么是线程安全
 
-5、内存溢出是怎么回事？举个例子
+线程安全：多个线程访问同一个数据时，采用了加锁机制或者同步，只允许一个线程访问该数据，直到该线程对该数据操作完毕，其他线程才能再对该数据进行操作。
 
+### 4.3、自旋锁
 
+1. 当线程A想要获取一把自旋锁的时候，该锁又被其他线程所持有，则线程A会在一个循环中自旋以检测锁是不是已经可以用了。
+   * 自旋时不释放CPU，因此持有自旋锁的线程应该尽快的释放自旋锁。否则等待自旋锁的线程会一直等待在那里自旋等待，浪费CPU时间。
+   * 持有自旋锁的线程应该在sleep时释放掉自旋锁以便于其他线程获取自旋锁。
+   * 自旋锁适用于锁使用者保持锁时间比较短的情况，这种情况下锁的使用效率比较高。
+   * 自旋锁是一种对多处理器相当有效的机制，而在单处理非抢占式系统中基本上没有作用、
+
+### 4.4、什么是CAS
+
+* CAS（Compare And Swap）比较并交换
+
+* CAS 不通过 JVM，直接利用 Java 本地 JNI（Java Native Interface 为 Java本地调用），直接调用 CPU 的 cmpxchg（汇编指令）指令
+* CAS 是项乐观锁技术，当多个线程尝试使用 CAS 同时更新同一个变量时，只有其中的一个线程能更新变量的值，其他的线程都失败，失败的线程并不会被挂起，而是被告知在这次竞争中失败了，并且可以再次竞争。
+
+>  1、使⽤CAS在线程冲突严重时，会⼤幅降低程序性能；CAS只适合于线程冲突较少的情况使⽤。
+>
+>  2、synchronized在jdk1.6之后，已经改进优化。synchronized的底层实现主要依靠Lock-Free的队列，基本思路是⾃旋后阻塞，竞 争切换后继续竞争锁，稍微牺牲了公平性，但获得了⾼吞吐量。在线程冲突较少的情况下，可以获得和CAS类似的性能；⽽线 程冲突严重的情况下，性能远⾼于CAS。 
+
+<br>
+
+### 4.5、乐观锁
+
+乐观锁是一种思想。相对于悲观锁而言，乐观锁会假设认为数据一般情况下不会造成冲突，所以在数据进行提交跟新的时候，才会正式对数据的冲突与否进行检测，如果发生了冲突，则让返回用户错误信息，让用户去做决定如何去做。
+
+### 4.6、悲观锁
+
+Java 在 JDK 1.5 之前都是靠 Synchronized 关键字保证同步，这种通过使用
 
 
 
