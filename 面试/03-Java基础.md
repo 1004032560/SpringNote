@@ -96,9 +96,7 @@ Map中有HashMap、TreeMap、HashTable和LinkedHashMap
 
 ### 4.6、悲观锁
 
-Java 在 JDK 1.5 之前都是靠 Synchronized 关键字保证同步，这种通过使用
-
-
+Java 在 JDK1.5 之前都是靠 synchronized 关键字保证同步的，这种通过使⽤⼀致的锁定协议来协调对共享状态的访问，可以确保⽆论哪个线程持有共享变量的锁，都采⽤独占的⽅式来访问这些变量。独占锁其实就是⼀种悲观锁，所以 可以说 synchronized 是悲观锁。
 
 6、equals和==的区别
 
