@@ -173,3 +173,4 @@ type key（type s1）
 （expire s1 50）设置存活时间
 
 （persist s）设置一直存活
+
