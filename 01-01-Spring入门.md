@@ -146,7 +146,7 @@ WEB Services、EJB、JMS、JMX、JCA CCI、Email、任务调度、动态语言�
 
 ### 1.9、Spring 模块和 jar 对应关系
 
-![looper_2020-05-29_10-34-17](E:\1.soft\personalNotes\Spring\image\looper_2020-05-29_10-34-17.png)
+![looper_2020-05-29_10-34-17](image\looper_2020-05-29_10-34-17.png)
 
 <br>
 
