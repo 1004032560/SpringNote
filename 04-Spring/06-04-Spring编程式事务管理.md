@@ -149,10 +149,6 @@ Repeatable Read，如 MySql
 
 Serializable：串行化
 
-![looper_2020-06-05_15-56-47](C:\Users\Administrator\Desktop\looper_2020-06-05_15-56-47.png)
-
-
-
 
 
 ## 8、数据库连接管理

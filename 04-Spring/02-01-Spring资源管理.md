@@ -22,7 +22,7 @@ ServletContextResource、InputStreamResource、ByteArrayResource
 
 对于 `ClassPathXmlApplicationContext` 容器对象：
 
-![looper_2020-05-29_20-05-50](image\looper_2020-05-29_20-05-50.png)
+![looper_2020-05-29_20-05-50](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_20-05-50.png)
 
 四种方式：`classpath:`、`file:///`、`http(s):` 以及无协议
 
@@ -89,13 +89,13 @@ public class SpringTest {
 
 IOC 容器实现了 ResourceLoader 接口，因此可以随时加载资源
 
-![looper_2020-05-29_20-12-40](image\looper_2020-05-29_20-12-40.png)
+![looper_2020-05-29_20-12-40](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_20-12-40.png)
 
 <br>
 
 ### 1.6、通过配置获取资源
 
-![looper_2020-05-29_20-15-43](image\looper_2020-05-29_20-15-43.png)
+![looper_2020-05-29_20-15-43](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_20-15-43.png)
 
 #### 案例：
 

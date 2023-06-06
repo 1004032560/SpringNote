@@ -78,7 +78,7 @@ Web： WebSocket、Servlet、Web Portlet
 
 **Spring 4.3 架构图**
 
-![looper_2020-05-29_10-18-01](image\looper_2020-05-29_10-18-01.png)
+![looper_2020-05-29_10-18-01](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-18-01.png)
 
 <br>
 
@@ -100,7 +100,7 @@ Web： WebSocket、Servlet、Web Portlet
 
 **核心功能：Spring 容器与 Bean 的生命周期管理**
 
-![looper_2020-05-29_10-24-39](image\looper_2020-05-29_10-24-39.png)
+![looper_2020-05-29_10-24-39](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-24-39.png)
 
 <br>
 
@@ -108,7 +108,7 @@ Web： WebSocket、Servlet、Web Portlet
 
 The Spring Container：管理（生产、使用、销毁）Bean
 
-![looper_2020-05-29_10-27-40](image\looper_2020-05-29_10-27-40.png)
+![looper_2020-05-29_10-27-40](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-27-40.png)
 
 <br>
 
@@ -116,7 +116,7 @@ The Spring Container：管理（生产、使用、销毁）Bean
 
 将辅助代码，在不修改原来代码的基础上，织入到原始对象的代码中，对源代码进行增强
 
-![looper_2020-05-29_10-30-32](image\looper_2020-05-29_10-30-32.png)
+![looper_2020-05-29_10-30-32](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-30-32.png)
 
 <br>
 
@@ -146,7 +146,7 @@ WEB Services、EJB、JMS、JMX、JCA CCI、Email、任务调度、动态语言�
 
 ### 1.9、Spring 模块和 jar 对应关系
 
-![looper_2020-05-29_10-34-17](image\looper_2020-05-29_10-34-17.png)
+![looper_2020-05-29_10-34-17](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-34-17.png)
 
 <br>
 
@@ -249,7 +249,7 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
 引入成功之后如下图，Maven 依赖中会出现 Spring 项目需要的 jar 包
 
-![looper_2020-05-29_17-51-50](image\looper_2020-05-29_17-51-50.png)
+![looper_2020-05-29_17-51-50](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-51-50.png)
 
 <br>
 
@@ -257,17 +257,17 @@ Spring：是轻量级，面向切面（AOP）和控制反转（IoC）的容器
 
 在 `src/main/resources` 目录下右键 `new` 选择 `other` 搜索 `xml` 选择 `XML File-` 点击 `next`
 
-![looper_2020-05-29_17-57-12](image\looper_2020-05-29_17-57-12.png)
+![looper_2020-05-29_17-57-12](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-57-12.png)
 
 命名为 `applicationContext.xml` 创建配置文件
 
 配置文件名称：可以任意起名，但是默认约定的是：`applicationContext.xml`
 
-![looper_2020-05-29_17-57-32](image\looper_2020-05-29_17-57-32.png)
+![looper_2020-05-29_17-57-32](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-57-32.png)
 
 目录结构如下：
 
-![looper_2020-05-29_17-57-41](image\looper_2020-05-29_17-57-41.png)
+![looper_2020-05-29_17-57-41](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-57-41.png)
 
 <br>
 

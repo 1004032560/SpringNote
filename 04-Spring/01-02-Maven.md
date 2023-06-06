@@ -23,7 +23,7 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 ## 2、maven的工作原理
 
-![looper_2020-05-29_10-50-28](image/looper_2020-05-29_10-50-28.png)
+![looper_2020-05-29_10-50-28](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-50-28.png)
 
 通过在文件 pom.xml 中配置需要的 jar 包的坐标之后，根据坐标先去本地仓库中查，是否有相应的 jar 包，如果有直接引用过来，如果没有则回去 Maven 中央仓库中去下载，相应坐标的 jar 包到本地仓库，再进行引用
 
@@ -39,25 +39,25 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 ### 3.2、[Maven 官网](https://maven.apache.org)
 
-![looper_2020-05-29_11-17-00](image/looper_2020-05-29_11-17-00.png)
+![looper_2020-05-29_11-17-00](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-17-00.png)
 
 <br>
 
 ### 3.3、进入官网，选 download
 
-![looper_2020-05-29_11-17-52](image/looper_2020-05-29_11-17-52.png)
+![looper_2020-05-29_11-17-52](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-17-52.png)
 
 <br>
 
 ### 3.4、下载压缩包
 
-![looper_2020-05-29_11-19-49](image/looper_2020-05-29_11-19-49.png)
+![looper_2020-05-29_11-19-49](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-19-49.png)
 
 <br>
 
 ### 3.5、解压到本地文件夹
 
-![looper_2020-05-29_11-23-35](E:/1.soft/personalNotes/Spring/image/looper_2020-05-29_11-23-35.png)
+![looper_2020-05-29_11-23-35](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-23-35.png)
 
 <br>
 
@@ -72,7 +72,7 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 * 变量名：Maven_HOME
 * 变量值：[Maven 下载好的之后，本地 Maven 文件 bin 目录之前的路径]
 
-![looper_2020-05-29_11-04-52](image\looper_2020-05-29_11-04-52.png)
+![looper_2020-05-29_11-04-52](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-04-52.png)
 
 例如：我自己的 Maven 下载的在 `E:\Dev\Apache\apache-maven-3.6.3-bin\apache-maven-3.6.3` 该目录下
 
@@ -84,19 +84,19 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 * 在最后边添加变量值：`;%MAVEN_HOME%\bin`，其中分号表示和前后隔开
 
-![looper_2020-05-29_10-59-26](image\looper_2020-05-29_10-59-26.png)
+![looper_2020-05-29_10-59-26](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_10-59-26.png)
 
 <br>
 
 #### 3.1.3、点击确定之后，在任意地方 `win键+R` 输入 `cmd` 打开命令行窗口
 
-![looper_2020-05-29_11-02-18](image\looper_2020-05-29_11-02-18.png)
+![looper_2020-05-29_11-02-18](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-02-18.png)
 
 <br>
 
 #### 3.1.4、输入 `mvn -v` 出现如下字样，表示环境变量配置成功
 
-![looper_2020-05-29_11-03-30](image\looper_2020-05-29_11-03-30.png)
+![looper_2020-05-29_11-03-30](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-03-30.png)
 
 <br>
 
@@ -106,7 +106,7 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 `window-preference-maven-installations-maven` 解压路径（不配置的话使用默认）
 
-![looper_2020-05-29_11-30-45](image/looper_2020-05-29_11-30-45.png)
+![looper_2020-05-29_11-30-45](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-30-45.png)
 
 <br>
 
@@ -118,7 +118,7 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
    `<localRepository>E:\Dev\Apache\apache-maven-3.6.3-bin\repository</localRepository>`（找对 setting.xml 文件中的位置添加该节点）
 
-   ![looper_2020-05-29_11-37-29](image/looper_2020-05-29_11-37-29.png)
+   ![looper_2020-05-29_11-37-29](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_11-37-29.png)
 
    <br>
 
@@ -162,11 +162,11 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 1. 在刚才默认配置的地方，选择右边的 add 添加 Maven 下载解压好的 Maven 路径 bin目录 之前的路径
 
-![looper_2020-05-29_11-30-45](image/looper_2020-05-29_11-30-45.png)
+![looper_2020-05-29_11-30-45](E:\MyBlog\SpringNote\image\looper_2020-05-29_11-30-45.png)
 
 2. 在 User Setting 下，配置 setting.xml 的路径和本地仓库的路径，完成后基本配置成功
 
-![looper_2020-05-29_12-09-37](image\looper_2020-05-29_12-09-37.png)
+![looper_2020-05-29_12-09-37](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_12-09-37.png)
 
 <br>
 
@@ -178,13 +178,13 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 ### 5.1、创建 Maven Project
 
-![looper_2020-05-29_17-26-21](image\looper_2020-05-29_17-26-21.png)
+![looper_2020-05-29_17-26-21](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-26-21.png)
 
 <br>
 
 ### 5.2、填写 GVN，选择打包方式
 
-![looper_2020-05-29_17-27-32](image\looper_2020-05-29_17-27-32.png)
+![looper_2020-05-29_17-27-32](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-27-32.png)
 
 > jar：普通的 Java 工程
 >
@@ -197,7 +197,7 @@ Maven 坐标：唯一确定 Maven 仓库中的一个 jar 的坐标
 
 ### 5.3、Maven 的工程目录结构
 
-![looper_2020-05-29_17-29-52](image\looper_2020-05-29_17-29-52.png)
+![looper_2020-05-29_17-29-52](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_17-29-52.png)
 
 <br>
 

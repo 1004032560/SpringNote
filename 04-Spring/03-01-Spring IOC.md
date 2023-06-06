@@ -13,7 +13,7 @@
 
 依赖注入：DI（Dependency Injection）把容器动态创建好的依赖对象注入到组件中
 
-![looper_2020-05-29_10-24-39](image\looper_2020-05-29_10-24-39.png)
+![looper_2020-05-29_10-24-39](E:\MyBlog\SpringNote\image\looper_2020-05-29_10-24-39.png)
 
 <br>
 
@@ -132,7 +132,7 @@ public static void main(String[] args) {
 <bean id="helloService" class="com.tjetc.service.HelloService"></bean>
 ~~~
 
-![looper_2020-05-29_21-01-04](image\looper_2020-05-29_21-01-04.png)
+![looper_2020-05-29_21-01-04](https://raw.githubusercontent.com/1004032560/images/master/looper_2020-05-29_21-01-04.png)
 
 id：唯一标识
 
