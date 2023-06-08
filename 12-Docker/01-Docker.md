@@ -90,10 +90,31 @@ systemctl enable docker
 systemctl start docker
 ```
 
-### 8、查看版本
+#### 8、查看版本
 
 ```shell
 docker -v
 
 Docker version 23.0.3, build 3e7cbfd
 ```
+
+#### 9、配置阿里云镜像源
+
+设置Docker阿里云镜像源，打开文件：`vim /etc/docker/daemon.json` 做如下编辑：
+
+```shell
+{
+	"registry-mirrors": [
+        "https://xxxxxxx.mirror.aliyuncs.com"
+	]
+}
+```
+
+https://xxxxxxx.mirror.aliyuncs.com 这个地址在阿里云控制台中可以寻找
+
+![image-20230608162701223](https://raw.githubusercontent.com/1004032560/images/master/imagesimage-20230608162701223.png)
+
+做如下操作，使aliyun加速器生效：
+
+`systemctl daemon-reload`
+`systemctl restart docker`

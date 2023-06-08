@@ -25,7 +25,7 @@
 
 执行 `docker-compose -v` 命令
 
-会报错 ：`-bash: docker-compose: command not found`
+会报错：`-bash: docker-compose: command not found`
 
 但是 Docker 在新版本中 23+ 默认已经安装了 docker-compose 了，不需要额外安装了。 输入  `docker info` 后，可以看到 compose 中是存在 Docker Compose 的
 
