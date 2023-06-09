@@ -105,7 +105,7 @@ Docker version 23.0.3, build 3e7cbfd
 ```shell
 {
 	"registry-mirrors": [
-        "https://xxxxxxx.mirror.aliyuncs.com"
+            "https://xxxxxxx.mirror.aliyuncs.com"
 	]
 }
 ```
@@ -117,4 +117,5 @@ https://xxxxxxx.mirror.aliyuncs.com 这个地址在阿里云控制台中可以�
 做如下操作，使aliyun加速器生效：
 
 `systemctl daemon-reload`
+
 `systemctl restart docker`
