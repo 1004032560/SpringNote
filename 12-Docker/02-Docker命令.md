@@ -241,26 +241,40 @@ docker ps -aq -n=1
 
 
 
-#### 4.3、进入退出容器docker attach/exit
+#### 4.3、进入容器docker attach/exec
+
+启动容器的时候使用 `-d` 参数时，容器启动后会进入后台。
+
+需要进入容器进行操作时，可以使用 `docker attach` 命令或 `docker exec` 命令。
 
 ~~~shell
-# 退出容器后再次进入容器
 # 方式一: 进入正在执行的终端
 docker attach 容器Id
-# 方式二: 进入容器后，开启一个新的终端
+# 方式二: 进入容器后，开启一个新的终端，路径不唯一
 docker exec -it 容器Id /bin/bash
-
-#####################################################################
-
-# 直接退出容器，并且停止容器
-exit
-# 退出容器，但不停止容器
-CTRL + P + Q
 ~~~
 
+通过 `docker exec` 进入容器时，需要指定容器路径，容器的路径可以通过 `docker inspect` 查看路径
+
+![image-20230612154251962](https://raw.githubusercontent.com/1004032560/images/master/imagesimage-20230612154251962.png)
+
+#### 4.4、退出容器exit
+
+* `exit` 方式：
+
+通过 `docker attach` 进入容器之后，使用 `exit` 退出时会使容器直接结束。
+
+通过 `docker exec` 进入容器之后，使用 `exit` 退出时不会使容器直接结束。
+
+* `CTRL + P + Q` 方式：
+
+`CTRL + P + Q` 方式下退出容器，不会在宿主机中结束该容器的进程。
+
+![image-20230612153405339](https://raw.githubusercontent.com/1004032560/images/master/imagesimage-20230612153405339.png)
 
 
-#### 4.4、删除容器docker rm
+
+#### 4.5、删除容器docker rm
 
 ~~~shell
 # 删除指定容器Id的容器
@@ -285,7 +299,7 @@ docker ps -aq | xargs docker rm -f
 
 
 
-#### 4.5、启动停止容器docker start/stop
+#### 4.6、启动停止容器docker start/stop
 
 ~~~shell
 # 启动容器
