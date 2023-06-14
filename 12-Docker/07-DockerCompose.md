@@ -6,7 +6,7 @@
 
 一致通过 Dockerfile 文件可以快速创建出一个 Docker 镜像快速启动一个单独的应用容器。但是在实际开发中，应用往往都不是单独存在的，还需要其他应用的支持和协助。例如要实现一个 Web 项目，除了 Web 服务容器本身，往往还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。
 
-因此出现了 `Docker Compose`。他的作用是允许用户通过一个单独的 `docker-compose.yml` 模板文件来定义一组相关联的应用容器为一个项目（project）。
+因此出现了 `Docker Compose`。他的作用是允许用户通过一个单独的 `docker-compose.yml` 模板文件来定义一组相关联的应用容器为一个项目（project）。一个文件，两个要素。
 
  `Docker Compose` 中有两个重要的概念：
 
@@ -72,5 +72,92 @@ docker-compose 配置成功。
 
 
 
-### 3、docker-compose应用
+### 3、docker-compose常用命令
+
+~~~shell
+docker compose --help             # 查看帮助命令
+
+docker compose up                 # 启动所有的 docker-compose 服务
+docker compose up -d              # 启动所有的 docker-compose 服务，并在后台运行
+
+docker compose down               # 停止并删除容器、网络、卷和镜像
+
+docker compose exec yml里的服务id   # 进入 docker-compose 服务实例内部
+
+docker compose ps                  # 查看 docker-compose 编排过所正在运行的容器
+docker compose top                 # 查看 docker-compose 编排过所正在运行的容器的进程
+
+docker compose logs yml里的服务id    # 查看 docker-compose 编排容器的日志
+
+docker compose config               # 查看 docker-compose 编排容器的配置
+docker compose config -q            # 查看 docker-compose 编排容器的配置，有问题才有输出
+
+docker compose start
+docker compose restart
+docker compose stop
+~~~
+
+
+
+### 4、docker-compose编排服务
+
+#### 4.1、编写docker-compose.yml文件
+
+~~~shell
+version: "3"
+services:
+  microService:
+    image: ruoyi-admin:1.0
+    container_name: ms01
+    ports:
+      - "8080:8080"
+    volumes:
+      - /app/microService:/data
+    network:
+      - ruoyi_network
+    depends_on:
+      - redis
+      - mysql
+  
+  redis:
+  	image: redis:6.0.8
+  	ports: 
+  	  - "6379:6379"
+  	volumes:
+  	  - /app/redis/redis.conf:/etc/redis/redis.conf
+  	  - /app/redis/data:/data
+  	network:
+      - ruoyi_network
+    command: redis-server /etc/redis/redis.conf
+    
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+      MYSQL_DATABASE: 'db-ruoyi'
+      MYSQL_USER: 'ruoyi'
+      MYSQL_PASSWORD: 'ruoyi123456'
+  	ports: 
+  	  - "3306:3306"
+  	volumes:
+  	  - /app/mysql/db:/var/lib/mysql
+  	  - /app/mysql/conf/my.cnf:/etc/my.cnf
+  	  - /app/mysql/init:/docker-entrypoint-initdb.d
+  	network:
+      - ruoyi_network
+    command: --default-authentication-plugin=mysql_natice_password # 解决外部无法访问问题
+
+# 先定义再使用。类似于先执行命令 docker network create ruoyi_network
+networks:
+  ruoyi_network
+~~~
+
+
+
+#### 4.2、执行docker-compose命令
+
+执行 `docker compose config -q` 如果没输出任何信息，则表示编排的 `docker-compose.yml` 文件没有问题。
+
+再执行 `docker compose up -d` 对项目进行启动。
 

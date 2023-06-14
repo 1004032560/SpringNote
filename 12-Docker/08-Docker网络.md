@@ -47,6 +47,8 @@ Docker 安装启动之后，宿主机上会创建出一个名为 docker0 的虚�
 
 通过 `ip addr` 可以看出 docker 容器启动之后创建的虚拟网络接口，用于连接宿主机和容器之间的通信。
 
+通过 bridge 构建的容器之间通过 IP 可以 ping 通，不能通过容器名称 ping 通；如果想要通过容器名 ping 通，可以使用自定义网络进行配置。
+
 ![image-20230613151916494](https://raw.githubusercontent.com/1004032560/images/master/imagesimage-20230613151916494.png)
 
 
