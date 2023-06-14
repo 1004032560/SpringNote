@@ -30,4 +30,4 @@ Docker、KUbernetes
 
 ### CI/CD（DevOps）
 
-Git、Gitlab、Jenkins
+Git、Gitlab、Jenkins、Prometheus
