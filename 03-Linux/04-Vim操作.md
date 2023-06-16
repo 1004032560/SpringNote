@@ -65,7 +65,7 @@ vim 则可以说是程序开发者的一项很好用的工具
 
 https://linux.cn/article-8144-1.html（Vim速查表）
 
-![looper_2020-10-24_20-29-29.png](image/looper_2020-10-24_20-29-29.png)
+![looper_2020-10-24_20-29-29.png](https://raw.githubusercontent.com/1004032560/images/master/imageslooper_2020-10-24_20-29-29.png)
 
 <br>
 

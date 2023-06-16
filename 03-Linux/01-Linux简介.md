@@ -22,7 +22,7 @@
 
 `User Applications` 应用程序：标准的操作系统都会有一套应用程序例如等
 
-![looper_2020-10-24_14-06-35.png](image/looper_2020-10-24_14-06-35.png)
+![looper_2020-10-24_14-06-35.png](https://raw.githubusercontent.com/1004032560/images/master/imageslooper_2020-10-24_14-06-35.png)
 
 <br>
 
