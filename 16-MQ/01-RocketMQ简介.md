@@ -42,34 +42,27 @@ NameSpace 一般指消息服务端，一般用于消息存储，以及消息接�
 
 NameServer：可以理解为是一个注册中心，主要是用来保存 topic 路由信息，管理 Broker。在 NameServer 的集群中，NameServer 与 NameServer 之间是没有任何通信的。
 
+
+
 Broker：核心的一个角色，主要是用来保存topic的信息，接受生产者产生的消息，持久化消息。在一个Broker集群中，相同的BrokerName可以称为一个Broker组，一个Broker组中,BrokerId为0的为主节点，其它的为从节点。BrokerName和BrokerId是可以在Broker启动时通过配置文件配置的。每个Broker组只存放一部分消息。
+
+
 
 生产者：生产消息的一方就是生产者
 
 生产者组：一个生产者组可以有很多生产者，只需要在创建生产者的时候指定生产者组，那么这个生产者就在那个生产者组
 
+
+
 消费者：用来消费生产者消息的一方
 
 消费者组：跟生产者一样，每个消费者都有所在的消费者组，一个消费者组可以有很多的消费者，不同的消费者组消费消息是互不影响的。
 
+
+
 topic（主题） ：可以理解为一个消息的集合的名字，生产者在发送消息的时候需要指定发到哪个topic下，消费者消费消息的时候也需要知道自己消费的是哪些topic底下的消息。
+
+
 
 Tag（子主题）：比 topic 低一级，可以用来区分同一 topic 下的不同业务类型的消息，发送消息的时候也需要指定。
 
-
-
-
-
-Topic
-
-MessageType
-
-MessageQueue
-
-Message
-
-MessageView
-
-MessageTag
-
-Producer：生产者
