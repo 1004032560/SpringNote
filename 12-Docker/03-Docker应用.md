@@ -219,6 +219,10 @@ apache/rocketmq \
 sh mqbroker -c /opt/rocketmq-4.4.0/conf/broker.conf
 ~~~
 
+`--link rmqnamesrv:namesrv \` 表示和 rmqnamesrv 容器通讯
+
+
+
 
 
 创建启动 rockermq-console 容器
@@ -227,8 +231,7 @@ sh mqbroker -c /opt/rocketmq-4.4.0/conf/broker.conf
 docker run -d \
 --restart=always \
 --name rmqconsoleng \
--e "JAVA_OPTS=-Drocketmq.namesrv.addr=192.79.33.54:9876 
--Dcom.rocketmq.sendMessageWithVIPChannel=false" \
+-e "JAVA_OPTS=-Drocketmq.namesrv.addr=192.79.33.54:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" \
 -p 9999:8080 \
 styletang/rocketmq-console-ng
 ```
